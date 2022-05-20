@@ -1,0 +1,396 @@
+*{
+	margin: 0;
+	padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.header{
+	min-height:110vh;
+	width: 100%;
+	background-image: linear-gradient(rgba(157, 150, 197, 0.493),rgba(157, 150, 197,0.493)),url(Images/grid1.png);
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}
+nav{
+    display: flex;
+    padding: 0% 2%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav img{
+    width: 170px;
+}
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.nav-links ul li a{
+    color: rgb(37, 30, 11);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+.nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #251d05;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+    width: 100%;
+}
+.text-box{
+    width: 90%;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.text-box h1{
+    font-size: 62px;
+}
+.text-box p{
+    margin: 10px 0 40px;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+}
+.regist-pg{
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+.regist-pg:hover{
+    border: 1px solid #af5f70;
+    background: #af5f70;
+    transition: 1s;
+}
+
+/*--------- ClubInfo ----------*/
+
+.ClubInfo{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+p{
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+}
+
+.row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+.ClubInfo-col{
+    flex-basis: 31%;
+    background: #efe3f1;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+.ClubInfo-col p{
+    text-align: justify;
+}
+
+h3{
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+.ClubInfo-col:hover{
+box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+@media(max-width: 1000px){
+    .row{
+        flex-direction: column;
+    }
+}
+
+/*------- Activities --------*/
+.Activities{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}  
+.Activities-col{
+    flex-basis: 32%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.Activities-col img{
+    width: 100%;
+    display: block;
+}
+.layer{
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+.layer:hover{
+    background: rgba(239, 229, 240, 0.596);
+}
+.layer h3{
+    width: 100%;
+    font-weight: 500;
+    color: #fff;
+    font-weight: bold;
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s;
+}
+.layer:hover h3{
+    bottom: 49%;
+    opacity: 1;
+}
+
+/*------ call to action ------*/
+
+.cta{
+    margin: 100px auto;
+    width: 80%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0,0.7)),url(Images/labcomp.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.cta h1{
+    color: #fff;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+.contact-pg{
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(255, 251, 251);
+    border: 1px solid rgb(255, 255, 255);
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+.contact-pg:hover{
+    border: 1px solid #af5f70;
+    background: #af5f70;
+    transition: 1s;
+}
+
+    .regist-pg:hover{
+    border: 1px solid #af5f70;
+    background: #af5f70;
+    transition: 1s;
+}
+
+/*--------footer--------*/
+.footer{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.footer h4{
+    margin-bottom: 25px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.icons .fab{
+    color: #f44336;
+    margin: 0 13px;
+    cursor: pointer;
+    padding: 18px 0;
+}
+.icons .far{
+    color: #f44336;
+    margin: 0 13px;
+    cursor: pointer;
+    padding: 18px 0;
+}
+.fa-heart{
+    color: #f44336;
+}
+
+/*------------ clubInfo page --------------*/
+.sub-header{
+    height: 70vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(204, 206, 216, 0.7),rgba(204, 206, 216, 0.7)),url(Images/Grid-Wallpapers-HD.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+.sub-header h1{
+    margin-top: 100px;
+}
+
+.club-info{
+    width: 80;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.info-col{
+    flex-basis: 48%;
+    padding: 30px 50px;
+    margin: auto;
+}
+.info-col img{
+    width: 100%;
+}
+.info-col h1{
+    padding-top: 0;
+}
+.info-col p{
+    padding: 30px 0 10px;
+    text-align: justify;
+}
+
+/*---------- activities ----------*/
+
+activities{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+h2{
+    text-align: center;
+}
+.activities-col{
+    flex-basis: 90%;
+    border-radius: 10px;
+    margin-bottom: 30%;
+    text-align: center;
+}
+.activities-col img{
+    width: 80%;
+    border-radius: 10px;
+}
+.activities-col p{
+    padding: 0;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.activities-col h3{
+    margin-top: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/*---------- members ----------*/
+
+.disp-members {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
+  h2{
+      padding-top: 100px;
+  }
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+  } 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+/*--------- contact us ----------*/
+
+.location{
+    width: 80%;
+    margin: auto;
+    padding: 80px 0;
+}
+.location iframe{
+    width: 100%;
+}
+.contact-us{
+    width: 80%;
+    margin: auto;
+}
+
+.contact-col{
+    flex-basis: 48%;
+    margin-bottom: 30px;
+}
+.contact-col div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.contact-col div .fa{
+    font-size: 28px;
+    color: #f44336;
+    margin: 10px;
+    margin-right: 30px;
+}
+.contact-col div .far{
+    font-size: 20px;
+    color: #f44336;
+    margin: 10px;
+    margin-right: 30px;
+}
+.contact-col div p{
+    padding: 0;
+}
+.contact-col div h5{
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 400;
+}
