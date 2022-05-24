@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Teacher;
-use App\User;
-
+use App\Student;
 use Illuminate\Http\Request;
 
-class TeacherController extends Controller
+class StudentContrtoller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +14,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
-        $users = DB::table('users')
-            ->join('teachers','teachers.user_id','=','users.id')
-            ->select('users.id as id','users.name as name')->get();
-
-        
-        return view('teachers.index', compact('teachers','users'));
+        //
     }
 
     /**
@@ -49,38 +41,33 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Teacher  $teacher
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
+    public function show(Student $student)
     {
-        dd("helo world");
-        return view('teachers.show',compact('teacher'));
-    } 
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Teacher  $teacher
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    public function edit(Student $student)
     {
-        $users = DB::table('users')
-        ->select('users.id as id','users.name as name','users.email as email', 'users.password as password','teachers.qualification as qualification')
-        ->where ('users.id', '<>',$user->id)->get();
-
-        return view ('users.edit',compact('user'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Teacher  $teacher
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request, Student $student)
     {
         //
     }
@@ -88,10 +75,10 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Teacher  $teacher
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy(Student $student)
     {
         //
     }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use DB;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -78,7 +78,7 @@ class RegisterController extends Controller
                 'user_id'=> $person->id,
             ]);
         }
-        else if($data['role']=='admin'){
+       /*  else if($data['role']=='admin'){
             DB::table('admin')->insert([
                 'user_id'=> $person->id,
             ]);
@@ -87,8 +87,27 @@ class RegisterController extends Controller
             DB::table('guardian')->insert([
                 'user_id' => $person->id,
             ]);
-        }
+        }*/
         return $person;
    
+}
+public function update(Request $request)
+
+{
+    $data = DB::table('users')->where('id', $request->id)->update([
+        'role'=> $request->role,
+        'name'=> $request->name,
+        'email'=> $request->email, 
+        'password'=> $request->password,
+        'phone_number' => $request->phone_number,
+    ]);
+    if ($request->role=='teacher'){
+        DB::table('teachers')->where('user_id', $request->id)->update([
+            'qualification' => $data,
+         
+   
+]);
+
+}
 }
 }

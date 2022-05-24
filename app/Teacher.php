@@ -9,6 +9,6 @@ class Teacher extends Model
     public $table = "teachers";
 
     protected $fillable = [
-       'user_id', 'qualifications'
+       'user_id', 'qualification'
     ]; 
 }

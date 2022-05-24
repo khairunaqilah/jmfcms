@@ -37,3 +37,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('subjects', 'SubjectController');
 Route::resource('teachers', 'TeacherController');
 Route::resource('fee_trackers', 'FeeTrackerController');
+Route::resource('users', 'UserController');

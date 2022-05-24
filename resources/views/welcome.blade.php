@@ -78,7 +78,17 @@ https://templatemo.com/tm-566-medic-care
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#contact">Contact</a>
+                            <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" class="nav-link">
+              
+              <p>
+                Logout
+              </p>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+             </form>
                             </li>
                         </ul>
                     </div>
@@ -94,11 +104,11 @@ https://templatemo.com/tm-566-medic-care
                             <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="jmftemp\images\slider\teacherowner.jpg" class="img-fluid" alt="">
+                                        <img src="jmftemp\images\slider\logo.jpeg" class="img-fluid" alt="">
                                     </div>
 
                                     <div class="carousel-item">
-                                        <img src="jmftemp\images\slider\Untitled design (1).png" class="img-fluid" alt="">
+                                        <img src="jmftemp\images\slider\teacherowner.png" class="img-fluid" alt="">
                                     </div>
 
                                     <div class="carousel-item">
@@ -313,7 +323,7 @@ https://templatemo.com/tm-566-medic-care
                     </div>
 
                     <div class="col-lg-2 col-md-6 col-12 my-4 my-lg-0">
-                        <h5 class="mb-lg-4 mb-3">Our Clinic</h5>
+                        <h5 class="mb-lg-4 mb-3">To Contact Us</h5>
 
                         <p><a href="mailto:hello@company.co">hello@company.co</a><p>
 
