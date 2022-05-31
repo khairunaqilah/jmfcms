@@ -5,7 +5,7 @@
                 <h2>Student Timetable</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('timetables.create') }}"> Add New Timetable</a>
+                <a class="btn btn-success" href="{{ route('timetables.create') }}"> Add New Teacher?</a>
             </div>
         </div>
     </div>

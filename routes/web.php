@@ -38,3 +38,4 @@ Route::resource('subjects', 'SubjectController');
 Route::resource('teachers', 'TeacherController');
 Route::resource('fee_trackers', 'FeeTrackerController');
 Route::resource('users', 'UserController');
+Route::resource('guardians', 'GuardianController');

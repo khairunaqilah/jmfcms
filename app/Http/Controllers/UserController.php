@@ -30,13 +30,19 @@ class UserController extends Controller
              ->get();
             //->toSql();
             // dd($teacher);
-        return view('users.show',compact('user','teacher'));
+        $guardian= DB::table('users')//join
+        ->join('guardians','guardians.user_id','=','users.id')
+        ->where('users.id',$user->id)
+        ->select('users.id as id','users.name as name','users.email as email', 'users.password as password','guardians.address as address')
+         ->get();
+         
+        return view('users.show',compact('user','teacher','guardian'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Subject  $subject
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -45,7 +51,12 @@ class UserController extends Controller
         ->join('teachers','teachers.user_id','=','users.id')
         ->select('users.id as id','users.name as name','users.email as email', 'users.password as password','teachers.qualification as qualification')
         ->where('users.id','=',$user->id)->get();
-    return view('users.edit',compact('user','teacher'));
+
+        $guardian= DB::table('users')//join
+        ->join('guardians','guardians.user_id','=','users.id')
+        ->select('users.id as id','users.name as name','users.email as email', 'users.password as password','guardians.address as address')
+        ->where('users.id','=',$user->id)->get();
+    return view('users.edit',compact('user','teacher','guardian'));
     }
 
     /**
@@ -81,6 +92,19 @@ class UserController extends Controller
             $teacher->user_id= $user->id; //panggil id user
             $teacher->save();
         
+        }
+        else if ($request->role=='guardian'){
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = $request->password;
+            $user->phone_number = $request->phone_number;
+            $user->save();
+
+            
+            $guardian = new Guardian;
+            $guardian->address= $request->address;
+            $guardian->user_id= $user->id; //panggil id user
+            $guardian->save();
         }
         return redirect('users/'.$user->id.'');
                         

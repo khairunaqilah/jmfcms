@@ -12,30 +12,30 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Fee Month:</strong>
-                {{ $fee_tracker->fee_month}}
+                {{ $feetracker->fee_month}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Deadline:</strong>
-                {{ $fee_tracker->payment_deadline }}
+                {{ $feetracker->payment_deadline }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Receipt:</strong>
-                {{ $fee_tracker->receipt }}
+                {{ $feetracker->receipt }}
             </div>
         </div>
         
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Status:</strong>
-                {{ $fee_tracker->payment_status }}
+                {{ $feetracker->payment_status }}
             </div>
         </div>
         <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('feetrackers.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('fee_trackers.index') }}"> Back</a>
         </div>
     </div>
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.ftracktemp')
+@extends('layouts.template')
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
@@ -20,7 +20,7 @@
     </div>
 @endif
    
-<form action="{{ route('feetrackers.store') }}" method="POST">
+<form action="{{ route('fee_trackers.store') }}" method="POST">
     @csrf
   
      <div class="row">
@@ -51,7 +51,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         
-                <a class="btn btn-primary" href="{{ route('feetrackers.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('fee_trackers.index') }}"> Back</a>
         </div>
     </div>
    

@@ -78,16 +78,16 @@ class RegisterController extends Controller
                 'user_id'=> $person->id,
             ]);
         }
-       /*  else if($data['role']=='admin'){
-            DB::table('admin')->insert([
+         else if($data['role']=='admin'){
+            DB::table('admins')->insert([
                 'user_id'=> $person->id,
             ]);
             }
         else if( $data['role']=='guardian'){
-            DB::table('guardian')->insert([
+            DB::table('guardians')->insert([
                 'user_id' => $person->id,
             ]);
-        }*/
+        }
         return $person;
    
 }
@@ -109,5 +109,14 @@ public function update(Request $request)
 ]);
 
 }
+    else if ($request->role=='guardian'){
+        DB::table('guardians')->where('user_id', $request->id)->update([
+            'address' => $data,
+         
+   
+]);
+
+}
+
 }
 }

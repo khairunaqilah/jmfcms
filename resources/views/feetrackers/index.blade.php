@@ -1,5 +1,5 @@
 @extends('layouts.ftracktemp')
 
 @section('content')
-@include('feetrackers.table')
+@include('fee_trackers.table')
 @endsection

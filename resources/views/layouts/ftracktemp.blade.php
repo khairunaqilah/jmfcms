@@ -88,48 +88,7 @@ https://templatemo.com/tm-566-medic-care
             
 
             <section class="section-padding" id="booking">
-                <div class="container">
-                    <div class="row">
-                    
-                        <div class="col-lg-8 col-12 mx-auto">
-                            <div class="booking-form">
-                                
-                                <h2>Fee Tracker</h2>
-
-                                <table>
-                                  <tr>
-                                    <th>Fee Month</th>
-                                    <th>Deadline</th>
-                                    <th>Receipt</th> <!-- not sure what would be suitable-->
-                                    <th>Status</th>
-                            
-                                  </tr>
-                                  <tr>
-                                    <td>May</td>
-                                    <td>5/5/2022   </td>
-
-                                    <td> <label for="file">Choose File</label>
-                                    <input type="file" name="receipt"/>
-                                <button type="submit" name="submit">Upload</button></td> <!-- jmf groups student according to age, but doesnt name the group in their ws group-->
-                                    <td> Paid</td>
-                                  </tr>
-                                  <tr>
-                                    <td>June</td>
-                                    <td>5/6/2022   </td>
-
-                                    <td> <label for="file">Choose File</label>
-                                    <input type="file" name="file"/>
-                                <button type="submit" name="submit">Upload</button></td> <!-- jmf groups student according to age, but doesnt name the group in their ws group-->
-                                    <td> Unpaid</td>
-                                  </tr>
-                                  
-                                </table>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                
             </section>
 
         </main>

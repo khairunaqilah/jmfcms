@@ -5,7 +5,7 @@
                 <h2>List of Fee Trackers</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('feetrackers.create') }}"> Add New Fee Trackers</a>
+                <a class="btn btn-success" href="{{ route('fee_trackers.create') }}"> Add New Fee Trackers</a>
             </div>
         </div>
     </div>
@@ -26,19 +26,19 @@
             
             <th width="280px">Action</th>
         </tr>
-        @foreach ($subject as $s)
+        @foreach ($feetracker as $f) <!--variable pegang object!-->
         <tr>
-            <td>{{ $s->id }}</td>
-            <td>{{ $s->fee_month}}</td>
-            <td>{{ $s->payment_deadline }}</td>
-            <td>{{ $s->receipt }}</td>
-            <td>{{ $s->payment_status }}</td>
+            <td>{{ $f->id }}</td>
+            <td>{{ $f->fee_month}}</td>
+            <td>{{ $f->payment_deadline }}</td>
+            <td>{{ $f->receipt }}</td>
+            <td>{{ $f->payment_status }}</td>
             <td>
-                <form action="{{ route('feetrackers.destroy',$s->id) }}" method="POST">
+                <form action="{{ route('fee_trackers.destroy',$s->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('feetrackers.show',$s->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('fee_trackers.show',$s->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('feetrackers.edit',$s->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('fee_trackers.edit',$s->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
