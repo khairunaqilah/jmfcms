@@ -23,7 +23,7 @@
 @endsection
 
 @elseif(Auth::User()->role=='guardian')
-@extends('layouts.template')
+@include('layouts.gtemp')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

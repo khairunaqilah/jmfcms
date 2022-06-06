@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Guardian;
+use App\User;
+
 use Illuminate\Http\Request;
 
 class GuardianController extends Controller

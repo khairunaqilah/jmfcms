@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Teacher;
+use App\Guardian;
 use App\User;
 use Illuminate\Http\Request;
 use DB;
@@ -18,7 +19,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Subject  $subject
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
@@ -35,6 +36,8 @@ class UserController extends Controller
         ->where('users.id',$user->id)
         ->select('users.id as id','users.name as name','users.email as email', 'users.password as password','guardians.address as address')
          ->get();
+         //->toSql();
+         //dd($guardian);
          
         return view('users.show',compact('user','teacher','guardian'));
     }
@@ -93,7 +96,7 @@ class UserController extends Controller
             $teacher->save();
         
         }
-        else if ($request->role=='guardian'){
+        else if ($user->role=='guardian'){
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = $request->password;

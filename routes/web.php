@@ -21,21 +21,22 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //index
-//Route::get('/subjects', 'SubjectController@index')->name('subjects.index');
-//create
-//Route::get('/subjects/create', 'SubjectController@create')->name('subjects.create');
-//store
-//Route::post('/subjects/store', 'SubjectController@store')->name('subjects.store');
-//show or view
-//Route::put('/subjects/{subject}', 'SubjectController@show')->name('subjects.show');
-//edit
-//Route::get('/subjects/{subject}/edit', 'SubjectController@edit')->name('subjects.edit');
-//update
-//Route::put('/subjects/{subject}', 'SubjectController@update')->name('subjects.update');
-//delete or destroy
-//Route::delete('/subjects/{subject}', 'SubjectController@destroy')->name('subjects.delete');
+
 Route::resource('subjects', 'SubjectController');
 Route::resource('teachers', 'TeacherController');
 Route::resource('fee_trackers', 'FeeTrackerController');
 Route::resource('users', 'UserController');
 Route::resource('guardians', 'GuardianController');
+Route::get('test', function () {
+
+    $user = [
+        'name' => 'MONTHLY JMF PROGRAME FEE',
+        'role' => 'guardian'
+    ]; //nanti remove
+
+    \Mail::to('kaqilah2@gmail.com')->send(new \App\Mail\NewMail($user));
+
+    dd("success");
+
+});
+Route::resource('students', 'StudentController');
