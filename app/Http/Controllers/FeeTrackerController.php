@@ -75,9 +75,12 @@ class FeeTrackerController extends Controller
      * @param  \App\FeeTracker  $feetrackers
      * @return \Illuminate\Http\Response
      */
-    public function edit(FeeTracker  $feetracker)
+    public function edit(  $feetracker)
     {
-        return view('feetrackers.edit',compact('feetracker'));
+        $feetrackers = DB::table('fee_trackers')
+        ->where('id','=',$feetracker)->get();
+        
+        return view('feetrackers.edit',compact('feetrackers'));
     }
 
     /**
@@ -87,17 +90,17 @@ class FeeTrackerController extends Controller
      * @param  \App\FeeTracker  $feetracker
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request,  $feetracker)
     {
         request()->validate([
             'fee_month'=> 'nullable',
-            'payment_deadline'=>'nullable',
             'file' => 'nullable',
             'payment_status'=>'nullable',
 
         ]);
             if($request->hasFile('receipt'))
             {
+                
             $file = $request->file('receipt');
             $fileName =$file ->getClientOriginalName();
             $destinationPath = public_path().'/receipts';
@@ -105,9 +108,8 @@ class FeeTrackerController extends Controller
 
             
 
-            $data = DB::table('fee_trackers')->update([
-                'fee_month'=>$request->fee_month,
-                'payment_deadline'=>$request->payment_deadline,
+            DB::table('fee_trackers')->where('id',$feetracker)->update([
+                
                 'receipt'=>$fileName,
                 'payment_status'=>$request->payment_status,
             ]);
@@ -135,9 +137,11 @@ class FeeTrackerController extends Controller
      */
     public function destroy(FeeTracker $feetracker)
     {
+        
+        dd($feetracker);
         $feetracker->delete();
 
-       return redirect()->route('feetrackers.index')
+       return redirect()->route('fee_trackers.index')
        ->with('success','Fee Tracker deleted successfully');
     }
 }
