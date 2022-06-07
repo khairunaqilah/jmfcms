@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 use App\FeeTracker;
+use App\User;
 use Illuminate\Http\Request;
+use DB;
+use Validator,Redirect,Response,File,Auth;
 
 class FeeTrackerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $feetracker = FeeTracker::all();
@@ -15,26 +22,38 @@ class FeeTrackerController extends Controller
 
     public function create()
     {
-        return view('feetrackers.create');        
+       $guardians = DB::select('select* from users where role ="guardian"');
+        return view('feetrackers.create',['guardians'=>$guardians]);        
     }
 
     public function store(Request $request)
     {
-        $input = $request->all();
 
         request()->validate([
             'fee_month'=> 'nullable',
             'payment_deadline'=>'nullable',
-            'receipt' => 'nullable|receipt|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'nullable',
             'payment_status'=>'nullable',
 
         ]);
+            
+         foreach($request->userid as $value => $task)
+            {
+                $data = DB::table('fee_trackers')->insert([
+                    'fee_month'=>$request->fee_month,
+                    'payment_deadline'=>$request->payment_deadline,
+                    'guardian_id'=>$request->userid[$value],
+                    'payment_status'=>$request->payment_status,
+                ]);
+            }
 
-        $feetrackerName = time().'.'.request()->image->getClientOriginalExtension();
-        $input['receipt'] = $feetrackerName ;
-        request()->image->move(public_path('receipts'), $feetrackerName );
+           
+        
+        
+        
+        
 
-        FeeTracker::create($request->all());
+        //FeeTracker::create($request->all());
         return back()
                 ->with('success','Image Upload Successfully');
 
@@ -56,9 +75,9 @@ class FeeTrackerController extends Controller
      * @param  \App\FeeTracker  $feetrackers
      * @return \Illuminate\Http\Response
      */
-    public function edit(FeeTracker  $feetrackers)
+    public function edit(FeeTracker  $feetracker)
     {
-        return view('subjects.edit',compact('subject'));
+        return view('feetrackers.edit',compact('feetracker'));
     }
 
     /**
@@ -70,14 +89,42 @@ class FeeTrackerController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
-        $request->validate([
+        request()->validate([
+            'fee_month'=> 'nullable',
+            'payment_deadline'=>'nullable',
+            'file' => 'nullable',
+            'payment_status'=>'nullable',
+
+        ]);
+            if($request->hasFile('receipt'))
+            {
+            $file = $request->file('receipt');
+            $fileName =$file ->getClientOriginalName();
+            $destinationPath = public_path().'/receipts';
+            $file->move($destinationPath,$fileName);
+
+            
+
+            $data = DB::table('fee_trackers')->update([
+                'fee_month'=>$request->fee_month,
+                'payment_deadline'=>$request->payment_deadline,
+                'receipt'=>$fileName,
+                'payment_status'=>$request->payment_status,
+            ]);
+        
+        
+        
+        }
+
+        //FeeTracker::create($request->all());
+        return back()
+                ->with('success','Image Upload Successfully');
+       /* $request->validate([
             'payment_status'=>'nullable',
         ]);
   
-        $feetracker->update($request->all());
+        $feetracker->update($request->all());*/
   
-        return redirect()->route('feetrackers.index')
-                        ->with('success','Fee Tracker  updated successfully');
     }
 
     /**

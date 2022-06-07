@@ -20,7 +20,7 @@
     </div>
 @endif
    
-<form action="{{ route('fee_trackers.store') }}" method="POST">
+<form action="{{ route('fee_trackers.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
   
      <div class="row">
@@ -35,6 +35,20 @@
                 <strong>Deadline:</strong>
                 <input type="text" class="form-control" name="payment_deadline" placeholder="Payment Deadline">
             </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-12">
+            <div class="form-group">
+                <strong>Assign To:</strong>
+                @foreach ($guardians as $user)
+                <input type="checkbox" class="form-control" name="userid[]" value="{{ $user->id}}" class="selectgroup-input @error('userid[]') is-invalid @enderror" >
+                @error('userid[]')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{message}}</strong>
+                    </span>
+                    @enderror
+                    <span class="selectgroup-button">{{$user->name}}</span>
+            </div>
+            @endforeach
         </div>
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">

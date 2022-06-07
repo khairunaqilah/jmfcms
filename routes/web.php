@@ -30,8 +30,8 @@ Route::resource('guardians', 'GuardianController');
 Route::get('test', function () {
 
     $user = [
-        'name' => 'MONTHLY JMF PROGRAME FEE',
-        'role' => 'guardian'
+        'name' => 'MONTHLY JMF PROGRAME FEE REMINDER',
+        
     ]; //nanti remove
 
     \Mail::to('kaqilah2@gmail.com')->send(new \App\Mail\NewMail($user));
@@ -39,4 +39,3 @@ Route::get('test', function () {
     dd("success");
 
 });
-Route::resource('students', 'StudentController');

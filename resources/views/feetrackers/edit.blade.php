@@ -20,21 +20,15 @@
         </div>
     @endif
   
-    <form action="{{ route('feetrackers.update',$fee_tracker->id) }}" method="POST">
+    <form action="{{ route('fee_trackers.update',$feetracker->id) }}" method="POST">
         @csrf
         @method('PUT')
    
-         <div class="row">
-         <div class="col-xs-6 col-sm-6 col-md-12">
+        <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
                 <strong>Fee Month:</strong>
                 <input type="text" name="fee_month" class="form-control" placeholder="Fee Month">
-            </div>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-12">
-            <div class="form-group">
-                <strong>Deadline:</strong>
-                <input type="text" class="form-control" name="payment_deadline" placeholder="Payment Deadline">
             </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-12">
@@ -49,11 +43,10 @@
                 <input type="text" class="form-control" name="payment_status" placeholder="Payment Status">
             </div>
         </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
-                <a class="btn btn-primary" href="{{ route('feetrackers.index') }}"> Back</a>
-            </div>
-        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+        
+                <a class="btn btn-primary" href="{{ route('fee_trackers.index') }}"> Back</a>
    
     </form>
 @endsection

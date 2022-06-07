@@ -27,8 +27,12 @@ class CreateStudentsTable extends Migration
             
             $table->timestamps();
         });
+        Schema::table('students', function (Blueprint $table) {
+            $table->foreign('guardian_id')->references('id')->on('guardians');
+            $table->foreign('subject_id')->references('id')->on('subjects');
+           
+        });
     }
-
     /**
      * Reverse the migrations.
      *
