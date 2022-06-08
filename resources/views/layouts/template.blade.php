@@ -1,3 +1,4 @@
+@if(Auth::User()-> role=='admin')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -233,3 +234,4 @@
 <script src="{{ asset('admin/dist/js/pages/dashboard.js')}}"></script>
 </body>
 </html>
+@endif

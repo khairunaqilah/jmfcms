@@ -1,3 +1,4 @@
+@if(Auth::User()->role=='guardian')
 <!doctype html>
 <html lang="en">
     <head>
@@ -105,3 +106,4 @@ https://templatemo.com/tm-566-medic-care
     </script>
     </body>
 </html>
+@endif

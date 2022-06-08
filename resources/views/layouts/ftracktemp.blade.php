@@ -1,3 +1,4 @@
+@if(Auth::User()->role=='guardian')
 <!doctype html>
 <html lang="en">
     <head>
@@ -7,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Students List</title>
+        <title>JMFCMS</title>
 
         <!-- CSS FILES -->        
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,7 +78,12 @@ https://templatemo.com/tm-566-medic-care
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#contact">Contact</a>
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" class="nav-link">Logout</a>
+                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+             </form>
                             </li>
                         </ul>
                     </div>
@@ -149,11 +155,11 @@ https://templatemo.com/tm-566-medic-care
         </footer>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/scrollspy.min.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="{{ asset('jmftemp/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('jmftemp/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('jmftemp/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('jmftemp/js/scrollspy.min.js') }}"></script>
+        <script src="{{ asset('jmftemp/js/custom.js') }}"></script>
 <!--
 
 TemplateMo 566 Medic Care
@@ -163,3 +169,4 @@ https://templatemo.com/tm-566-medic-care
 -->
     </body>
 </html>
+@endif
