@@ -1,5 +1,5 @@
 @if(Auth::User()->role=='teacher')
-@extends('layouts.template')
+@extends('layouts.cikgu')
    
 @section('content')
     <div class="row">

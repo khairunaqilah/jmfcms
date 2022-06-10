@@ -135,11 +135,11 @@ class FeeTrackerController extends Controller
      * @param  \App\FeeTracker $feetracker
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FeeTracker $feetracker)
+    public function destroy( $feetracker)
     {
         
-        dd($feetracker);
-        $feetracker->delete();
+        $f_tracker = FeeTracker::find($feetracker);
+        $f_tracker->delete();
 
        return redirect()->route('fee_trackers.index')
        ->with('success','Fee Tracker deleted successfully');
