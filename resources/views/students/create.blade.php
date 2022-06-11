@@ -96,67 +96,66 @@ https://templatemo.com/tm-566-medic-care
                                 
                                 <h2 class="text-center mb-lg-3 mb-2">Student Registration </h2>
                             
-                                <form role="form" action="#booking" method="post">
+                                <form action="{{ route('students.store') }}" method="POST">
+                                        @csrf
                                     <div class="row">
                                         <div class="col-lg-6 col-12">
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="Student's name" required>
+                                            <input type="text" name="name"  class="form-control" placeholder="Student's name" required>
                                         </div>
                                         <div class="col-lg-6 col-12">
-                                            <input type="date" name="name" id="dob" class="form-control" placeholder="Date Of Birth" required>
+                                        
+                                            <input type="date" name="dob"  class="form-control"   placeholder="yyyy-mm-dd"  required>
+                                            <script>document.getElementById("date").value</script>
                                         </div>
                                         <div class="col-lg-6 col-12">
-                                        <input type="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value=""  class="form-control"placeholder="Student's Email" required>
+                                        <input type="email" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value=""  class="form-control"placeholder="Student's Email" required>
                                         </div>
 
                                         <div class="col-lg-6 col-12">
-                                            <input type="string" name="nric" id="icnum" pattern="[0-9]+" required size="12" class="form-control" placeholder="IC Number" required>
+                                            <input type="string" name="nric"  pattern="[0-9]+" required size="12" class="form-control" placeholder="IC Number" required>
                                         </div>
                                         
                                         <div class="col-lg-6 col-12">
-                                            
-                                            <p>School:</p>
-                                                <select name="cars" id="cars">
-                                                    <option value="skttdijaya">SK TTDI JAYA</option>
-                                                    <option value="skbukitjelutong">SK BUKIT JELUTONG</option>
-                                                    <option value="skputraheights2">SK PUTRA HEIGHTS 2</option>
+                                        <select class="form-control" name="school" >
+                                        <option value="">-- Choose School --</option>
+                                                
+                                                    <option value="skttdijaya">SK TTDI JAYA
+                                                    <option value="skbukitjelutong">SK BUKIT JELUTONG
+                                                    <option value="skputraheights2">SK PUTRA HEIGHTS 2
                                                     <option value="skpuncakalam">SK PUNCAK ALAM</option>
                                                 </select>
                                             
                                         </div>
 
                                         <div class="col-lg-6 col-12">
-                                            <input type="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value=""  class="form-control"placeholder="Parent's Email" required>
-                                        </div>
-
-                                        <div class="col-lg-6 col-12">
-                                        <p>Subject</p>
-                                            <input type="checkbox" id="Male" name="gender" value="Male">
-                                            <label for="male">Malay</label><br>
-                                            <input type="checkbox" id="Female" name="gender" value="Female">
-                                            <label for="female">Chinese</label><br>
-                                            <input type="checkbox" id="Female" name="gender" value="Female">
-                                            <label for="female">Indian</label><br>
-                                            <input type="checkbox" id="Female" name="gender" value="Female">
-                                            <label for="female">Others</label><br>
+                                        <p>-- Choose Subject --</p>
+                                        
+                                       
+                                        @foreach ($subjects as $id => $name)
+                                            <input type="checkbox"  
+                                                value="{{$id}}" {{ (isset($student['subject_id']) == $id) ? ' selected' : '' }} > {{$name}} 
+                                                
+                                        @endforeach
+                                   
                                             
                                         </div>
                                         
                                         <div class="col-lg-6 col-12">
                                             <p>Gender</p>
-                                            <input type="radio" id="Male" name="gender" value="Male">
+                                            <input  type="radio"  name="gender" value="male">
                                             <label for="male">Male</label><br>
-                                            <input type="radio" id="Female" name="gender" value="Female">
+                                            <input type="radio"  name="gender" value="female">
                                             <label for="female">Female</label><br>
                                         </div>
                                         <div class="col-lg-6 col-12">
                                             <p>Race</p>
-                                            <input type="radio" id="Male" name="gender" value="Male">
+                                            <input  type="radio"  name="race" value="malay">
                                             <label for="malay">Malay</label><br>
-                                            <input type="radio" id="Female" name="gender" value="Female">
+                                            <input   type="radio"  name="race" value="chinese">
                                             <label for="chinese">Chinese</label><br>
-                                            <input type="radio" id="Female" name="gender" value="Female">
+                                            <input   type="radio"  name="race" value="indian">
                                             <label for="indian">Indian</label><br>
-                                            <input type="radio" id="Female" name="gender" value="Female">
+                                            <input   type="radio"  name="race" value="others">
                                             <label for="others">Others</label><br>
                                         </div>
                                       

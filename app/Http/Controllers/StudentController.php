@@ -7,7 +7,8 @@ use App\User;
 //use App\Guardian;
 use App\Subject;
 use Illuminate\Http\Request;
-use DB;
+use Carbon\Carbon;
+//use DB;
 
 class StudentController extends Controller
 {
@@ -22,7 +23,10 @@ class StudentController extends Controller
     }
     public function index()
     {
-        $student =Student::all();
+        $table = Student::with( 'subjects')
+        ->where('guardian_id', auth()->user()->id)
+        
+        ->get();
 
         return view('students.index',compact('student'));
     }
@@ -34,9 +38,13 @@ class StudentController extends Controller
      */
     public function create()
     {
-        /*$guardians = DB::select('select* from users where role ="guardian"');
-        return view('students.create',['guardians'=>$guardians]);   */    
-        return view('students.create'); 
+       
+    
+        $subjects = Subject::pluck('name', 'id');
+        
+
+        return view('students.create', compact('subjects' ));
+        
     }
 
     /**
@@ -47,18 +55,23 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' =>'required',
-            'nric' =>'required',
-            'dob' => 'required',
-            'school' =>'required',
-            'gender' =>'required',
-            'race' =>'required',
+        
+        Student::create([
+            'name' => $request->name,
+            'email' =>$request->email,
+            'nric' =>$request->nric,
+            'dob' =>$request->dob,
+            'school' =>$request->school,
+            'gender' =>$request->gender,
+            'race'=>$request->race,
+            'subject_id' => $request->subject_id,
+            'guardian_id' => auth()->user()->id,
+            
 
         ]);
+        
   
-        Student::create($request->all());
+        
    
         return redirect()->route('students.index')
                         ->with('success','Student created successfully.');
@@ -72,6 +85,10 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
+        $request->dob;
+            $age = Carbon::parse($request->dob)->diff(Carbon::now())->y;
+
+            dd($age. " Years"); // To check result
         return view('students.show', compact('student'));
     }
 
@@ -83,7 +100,10 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        return view('students.edit',compact('student'));
+        $subjects = Subject::pluck('name', 'id');
+
+        return view('students.edit',compact( 'subjects'));
+
     }
 
     /**
@@ -95,9 +115,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
+        
   
         $student->update($request->all());
   
