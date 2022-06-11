@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Teacher;
 use App\Guardian;
 use App\User;
-use App\Mail\UserEmail;
+use App\Mail\NewEmail;
 use Mail;
 use Illuminate\Http\Request;
 use DB;
@@ -117,11 +117,11 @@ class UserController extends Controller
     public function sendEmail(Request $request)
     {
         $users = User:: whereIn("id",$request->ids)->get();
-       
-            Mail::to($users)->send(new UserEmail());
-        
+        foreach ($users as $key => $user) {
+            Mail::to($user->email)->send(new UserEmail($user));
+        }
         return response()->json([ 'success'=>'Send email successfully']);
-        return view('users.sendEmail',compact('user'));
+       
     
     }
 

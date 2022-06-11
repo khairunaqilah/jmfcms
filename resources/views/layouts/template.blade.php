@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>JMFCMS | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -232,6 +234,37 @@
 <script src="{{ asset('admin/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('admin/dist/js/pages/dashboard.js')}}"></script>
+<script type="text/javascript">
+  
+  $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
+    
+  $(".send-email").click(function(){
+      var selectRowsCount = $("input[class='user-checkbox']:checked").length;
+
+      if (selectRowsCount > 0) {
+
+          var ids = $.map($("input[class='user-checkbox']:checked"), function(c){return c.value; });
+
+          $.ajax({
+             type:'POST',
+             url:"{{ route('ajax.send.email') }}",
+             data:{ids:ids},
+             success:function(data){
+                alert(data.success);
+             }
+          });
+
+      }else{
+          alert("Please select at least one user from list.");
+      }
+      console.log(selectRowsCount);
+  });
+
+</script>
 </body>
 </html>
 @endif

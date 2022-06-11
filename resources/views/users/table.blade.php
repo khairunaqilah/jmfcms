@@ -3,6 +3,7 @@
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>List of Users</h2>
+                <button class="btn btn-success send-email">Send Email</button>
             </div>
             
         </div>
@@ -41,8 +42,9 @@
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>
+            <td><input type="checkbox" class="user-checkbox" name="users[]" value="{{ $u->id }}"></td>
         </tr>
         @endforeach
     </table>
-        
+    
 @endsection

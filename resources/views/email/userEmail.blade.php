@@ -4,7 +4,7 @@
     <title>Monthly Fee Remainder</title>
 </head>
 <body>
-<h1>{{ $user['name'] }}</h1>
+<h1>{{ $user->name }}</h1>
     <p>To be paid by every 5th of the month</p>
     <p>Please do Instant/DuitNow transfer to: </p>
     <p>MAYBANK</p>
