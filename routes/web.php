@@ -28,15 +28,4 @@ Route::resource('fee_trackers', 'FeeTrackerController');
 Route::resource('users', 'UserController');
 Route::resource('guardians', 'GuardianController');
 Route::resource('students', 'StudentController');
-Route::get('test', function () {
-
-    $user = [
-        'name' => 'MONTHLY JMF PROGRAME FEE REMINDER',
-        
-    ]; //nanti remove
-
-    \Mail::to('kaqilah2@gmail.com')->send(new \App\Mail\NewMail($user));
-
-    dd("success");
-
-});
+Route::post('users-send-email',[UserController::class,'sendEmail']) ->name('ajax.send.email');

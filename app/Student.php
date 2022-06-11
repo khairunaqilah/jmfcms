@@ -11,7 +11,7 @@ class Student extends Model
     public $table = "students";
 
     protected $fillable = [
-        'name', 'email','nric','dob','school','gender','race','guardian_id','admin_id'
+        'name', 'email','nric','dob','school','gender','race','guardian_id','subject_id'
     ]; 
     public function subjects(){
         return $this->belongsTo(Subject::class, 'subject_id');

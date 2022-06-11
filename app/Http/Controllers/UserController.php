@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Teacher;
 use App\Guardian;
 use App\User;
+use App\Mail\UserEmail;
+use Mail;
 use Illuminate\Http\Request;
 use DB;
 
@@ -111,6 +113,16 @@ class UserController extends Controller
         }
         return redirect('users/'.$user->id.'');
                         
+    }
+    public function sendEmail(Request $request)
+    {
+        $users = User:: whereIn("id",$request->ids)->get();
+       
+            Mail::to($users)->send(new UserEmail());
+        
+        return response()->json([ 'success'=>'Send email successfully']);
+        return view('users.sendEmail',compact('user'));
+    
     }
 
     /**

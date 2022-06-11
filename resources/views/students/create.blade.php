@@ -133,7 +133,7 @@ https://templatemo.com/tm-566-medic-care
                                        
                                         @foreach ($subjects as $id => $name)
                                             <input type="checkbox"  
-                                                value="{{$id}}" {{ (isset($student['subject_id']) == $id) ? ' selected' : '' }} > {{$name}} 
+                                                value="{{$id}}" {{ (isset($student['subject_id']) == $subject_id) ? ' selected' : '' }} > {{$name}} 
                                                 
                                         @endforeach
                                    
