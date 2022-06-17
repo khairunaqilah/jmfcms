@@ -75,9 +75,7 @@
 
 
 @elseif(Auth::User()->role=='guardian')
-@extends('layouts.template')
-   
-@section('content')
+@extends('layouts.gprofile')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -147,6 +145,6 @@
         </div>
    
     </form>
-@endsection
+
 
 @endif

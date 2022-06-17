@@ -15,11 +15,14 @@ class FeeTrackerController extends Controller
     }
     public function index()
     {
-        $feetracker = FeeTracker::all();
-        /*->where('guardian_id', auth()->user()->id)
-        ->orderBy('day_id', 'asc')
+        if(Auth::User()->role =='guardian'){
+        $feetracker = FeeTracker::all()
+        ->where('guardian_id', auth()->user()->id);}
+        /*->orderBy('day_id', 'asc')
         ->orderBy('time_from', 'asc')
         ->get();*/
+        else if(Auth::User()->role =='admin'){
+            $feetracker = FeeTracker::all();}
   
         return view('feetrackers.index',compact('feetracker'));
     }

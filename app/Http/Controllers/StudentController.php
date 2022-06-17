@@ -23,10 +23,10 @@ class StudentController extends Controller
     }
     public function index()
     {
-        $table = Student::with( 'subjects')
-        ->where('guardian_id', auth()->user()->id)
+        $table = Student::all()
+        ->where('guardian_id', auth()->user()->id);
         
-        ->get();
+        
 
         return view('students.index',compact('student'));
     }

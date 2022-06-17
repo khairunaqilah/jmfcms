@@ -1,4 +1,4 @@
-@elseif(Auth::User()->role=='guardian')
+@if(Auth::User()->role=='guardian')
 
 <section class="section-padding" id="booking">
                 <div class="container">
@@ -7,30 +7,30 @@
                         <div class="col-lg-8 col-12 mx-auto">
                             <div class="booking-form">
                                 
-                                <h2>Fee Tracker</h2>
+                                <h2>Students</h2>
 
                                 <table>
                                   <tr>
-                                  <th>No</th>
-                                  <th>Fee Month</th>
-                                    <th>Deadline</th>
-                                    <th>Receipt</th> <!-- not sure what would be suitable-->
-                                    <th>Status</th>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>NRIC</th>
+                                    <th>School</th> <!-- not sure what would be suitable-->
+                                    <th>Parent's Name</th>
                                     <th>Action</th>
                             
                                   </tr>
-                                  @foreach ($student as $st) <!--variable pegang object!-->
+                                  @foreach ($students as $st) <!--variable pegang object!-->
                                   <tr>
-                                  <td>{{ $f->id }}</td>
-                                 <td>{{ $f->fee_month}}</td>
-                                 <td>{{ $f->payment_deadline }}</td>
-                                 <td>{{ $f->receipt }}</td>
-                                 <td>{{ $f->payment_status }}</td>
-                                 <td> <form action="{{ route('fee_trackers.destroy',$f->id) }}" method="POST">
+                                  <td>{{ $st->id }}</td>
+                                 <td>{{ $st->name}}</td>
+                                 <td>{{ $st->nric }}</td>
+                                 <td>{{ $st->school }}</td>
+                                 <td>{{ $st->guardian_id->user->name }}</td>
+                                 <td> <form action="{{ route('students.destroy',$st->id) }}" method="POST">
    
-   <a class="btn btn-info" href="{{ route('fee_trackers.show',$f->id) }}">Show</a>
+   <a class="btn btn-info" href="{{ route('students.show',$st->id) }}">Show</a>
 
-   <a class="btn btn-primary" href="{{ route('fee_trackers.edit',$f->id) }}">Edit</a>
+   <a class="btn btn-primary" href="{{ route('students.edit',$st->id) }}">Edit</a>
 
    
 </form>

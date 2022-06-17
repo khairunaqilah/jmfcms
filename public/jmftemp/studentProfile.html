@@ -93,7 +93,7 @@ https://templatemo.com/tm-566-medic-care
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="patientList.html">Students</a></li>
+              
               <li class="breadcrumb-item active" aria-current="page">Student Profile</li>
             </ol>
           </nav>
@@ -106,9 +106,9 @@ https://templatemo.com/tm-566-medic-care
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://media.istockphoto.com/vectors/pretty-girl-avatar-flat-cartoon-style-vector-illustration-vector-id1140166223?k=20&m=1140166223&s=170667a&w=0&h=wgeq7igZ8rP0WrzCBGJL70dLF9bPri1nrMXNerQ6kOA=" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>Alia Binti Ali</h4>
-                      <p class="text-secondary mb-1">Student ID</p>
-                      <p class="text-muted font-size-sm">10 Years Old</p>
+                      <h4>{{ $user->name }}</h4>
+                      <p class="text-secondary mb-1"> {{ $user->email }}</p>
+                      <p class="text-muted font-size-sm">{{ $user->phone_number }}</p>
                       <button style="background-color:blue;"class="btn btn-primary"onclick="window.location.href='patientList.html';" >Fee Tracker</button>
                       
                     </div>
@@ -122,138 +122,29 @@ https://templatemo.com/tm-566-medic-care
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">IC Number</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      100202-05-1234
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">School</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                        SK Bukit Jelutong
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Parent's Name</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      Hajar Binti Harun
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Parent's Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     hajarharun@gmail.com
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Parent's Phone Number</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     0124435672
-                    </div>
-                  </div>
-                  <hr>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Student's Race</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     Malay
-                    </div>
-                  </div>
-                  <hr>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Registered Date</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     20/2/2022
-                    </div>
-                  </div>
-                  <hr>
-                  <hr>
+                 
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Home Address</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    12, Jalan Desa, Kampung Baru
+                      @if($guardian->count() >= 1)
+                      @foreach ($guardian as $guardian)
+                          {{ $guardian->address }}
+                      @endforeach
+                  @endif
                     </div>
                   </div>
-                  <hr>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Student's Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     alia10@gmail.com
-                    </div>
-                  </div>
-                  <hr>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Password</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     *****
-                    </div>
-                  </div>
+               
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="updateStudent.html">Update</a>
+                      <a class="btn btn-info " target="__blank" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                      <a class="btn btn-info " target="__blank" href="{{ route('home') }}">Back</a>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="row gutters-sm">
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Program</i>&nbsp; Teachers</h6>
-                     
-                      <small>Keyboard</small>
-                       <!--<div class="progress mb-3" style="height: 5px">  !-->
-                        <p class="text-muted font-size-sm">Teacher Nadine</p>
-                        <small>Music Theory </small>
-                        <!--<div class="progress mb-3" style="height: 5px">  !-->
-                         <p class="text-muted font-size-sm">Teacher Nadine</p>
-                      </div>
-                      
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-
             </div>
           </div>
 

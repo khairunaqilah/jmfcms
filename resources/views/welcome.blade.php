@@ -82,9 +82,9 @@ https://templatemo.com/tm-566-medic-care
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" class="nav-link">
               
-              <p>
+              
                 Logout
-              </p>
+              
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
