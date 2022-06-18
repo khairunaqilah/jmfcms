@@ -152,10 +152,10 @@ class FeeTrackerController extends Controller
        return redirect()->route('fee_trackers.index')
        ->with('success','Fee Tracker deleted successfully');
     }
-    public function text($number)
+    public function text()
     {
     	
-        $url = Http::post('https://pro.waapify.com/api/send.php?number=$number&type=text&message=test%20message&instance_id=62A220F4E788D&access_token=76bad889dad35fa4fa80acb45f2460a4');
+        $url = Http::post('https://pro.waapify.com/api/send.php?number=60133047981&type=text&message=guardian%20uploaded%20receipt%20in%20fee%20tracker&instance_id=62A220F4E788D&access_token=76bad889dad35fa4fa80acb45f2460a4');
         
         //return Redirect::to('https://www.itsolutionstuff.com/post/how-to-send-email-to-multiple-users-in-laravelexample.html');
         redirect()->to($url)->send();
