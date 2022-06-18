@@ -19,13 +19,13 @@
                                     <th>Action</th>
                             
                                   </tr>
-                                  @foreach ($students as $st) <!--variable pegang object!-->
+                                  @foreach ($student as $st) <!--variable pegang object!-->
                                   <tr>
                                   <td>{{ $st->id }}</td>
                                  <td>{{ $st->name}}</td>
                                  <td>{{ $st->nric }}</td>
                                  <td>{{ $st->school }}</td>
-                                 <td>{{ $st->guardian_id->user->name }}</td>
+                                 
                                  <td> <form action="{{ route('students.destroy',$st->id) }}" method="POST">
    
    <a class="btn btn-info" href="{{ route('students.show',$st->id) }}">Show</a>

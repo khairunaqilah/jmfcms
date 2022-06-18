@@ -108,7 +108,7 @@ https://templatemo.com/tm-566-medic-care
                     <div class="mt-3">
                       <h4>{{ $student->name }}</h4>
                       <p class="text-secondary mb-1">{{ $student->id }}</p>
-                      <p class="text-muted font-size-sm">{{ $age }}</p>
+                      <p class="text-muted font-size-sm">{{ $student->dob }}</p>
                       <button style="background-color:blue;"class="btn btn-primary"href="{{route('subjects.index')}}" >Fee Tracker</button>
                       
                     </div>
@@ -145,7 +145,7 @@ https://templatemo.com/tm-566-medic-care
                       <h6 class="mb-0">Parent's Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Hajar Binti Harun
+                    {{ auth()->user()->name }}
                     </div>
                   </div>
                   <hr>

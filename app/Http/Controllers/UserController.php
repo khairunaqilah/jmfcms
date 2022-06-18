@@ -116,12 +116,13 @@ class UserController extends Controller
     }
     public function sendEmail(Request $request)
     {
+        foreach ($users as $key => $user) 
         $users = User:: whereIn("id",$request->ids)->get();
-        foreach ($users as $key => $user) {
-            Mail::to($user->email)->send(new UserEmail($user));
-        }
-        return response()->json([ 'success'=>'Send email successfully']);
        
+            Mail::to($user->email)->send(new NewMail($user));
+        
+            dd("success");
+            return response()->json([ 'success'=>'Send email successfully']);
     
     }
 

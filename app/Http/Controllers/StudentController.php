@@ -7,8 +7,9 @@ use App\User;
 //use App\Guardian;
 use App\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-//use DB;
+use DB;
 
 class StudentController extends Controller
 {
@@ -23,13 +24,19 @@ class StudentController extends Controller
     }
     public function index()
     {
-        $table = Student::all()
-        ->where('guardian_id', auth()->user()->id);
+        if(Auth::User()->role =='guardian'){
+            $student = Student::all()
+            ->where('guardian_id', auth()->user()->id);}
+            /*->orderBy('day_id', 'asc')
+            ->orderBy('time_from', 'asc')
+            ->get();*/
+            else if(Auth::User()->role =='admin'){
+                $student = Student::all();
+            }
+            return view('students.index',compact('student'));
         
-        
-
-        return view('students.index',compact('student'));
-    }
+    
+}
 
     /**
      * Show the form for creating a new resource.
@@ -85,10 +92,10 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        $request->dob;
+       /* $request->dob;
             $age = Carbon::parse($request->dob)->diff(Carbon::now())->y;
 
-            dd($age. " Years"); // To check result
+            dd($age. " Years"); // To check result*/
         return view('students.show', compact('student'));
     }
 

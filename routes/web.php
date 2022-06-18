@@ -21,11 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //index
-
+Route::get('/text','FeeTrackerController@text')->name('text');
 Route::resource('subjects', 'SubjectController');
 Route::resource('teachers', 'TeacherController');
 Route::resource('fee_trackers', 'FeeTrackerController');
 Route::resource('users', 'UserController');
 Route::resource('guardians', 'GuardianController');
 Route::resource('students', 'StudentController');
-Route::post('users-send-email',[UserController::class,'sendEmail']) ->name('ajax.send.email');
+
