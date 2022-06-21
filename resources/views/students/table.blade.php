@@ -25,7 +25,7 @@
                                  <td>{{ $st->name}}</td>
                                  <td>{{ $st->nric }}</td>
                                  <td>{{ $st->school }}</td>
-                                 
+                                 <td>{{ auth()->user()->name }}</td>
                                  <td> <form action="{{ route('students.destroy',$st->id) }}" method="POST">
    
    <a class="btn btn-info" href="{{ route('students.show',$st->id) }}">Show</a>

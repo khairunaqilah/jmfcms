@@ -28,4 +28,5 @@ Route::resource('fee_trackers', 'FeeTrackerController');
 Route::resource('users', 'UserController');
 Route::resource('guardians', 'GuardianController');
 Route::resource('students', 'StudentController');
-
+Route::resource('groups', 'GroupController');
+Route::post('users-send-email',[UserController::class,'sendEmail']) ->name('ajax.send.email');

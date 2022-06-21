@@ -104,12 +104,12 @@ https://templatemo.com/tm-566-medic-care
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="{{ asset('jmftemp/https://media.istockphoto.com/vectors/pretty-girl-avatar-flat-cartoon-style-vector-illustration-vector-id1140166223?k=20&m=1140166223&s=170667a&w=0&h=wgeq7igZ8rP0WrzCBGJL70dLF9bPri1nrMXNerQ6kOA=') }}" alt="Admin" class="rounded-circle" width="150">
+                    <img src="https://www.kindpng.com/imgv/ihoJmmR_college-student-icon-hd-png-download/" alt="Profile Pic" class="rounded-circle" width="150">
                     <div class="mt-3">
                       <h4>{{ $student->name }}</h4>
                       <p class="text-secondary mb-1">{{ $student->id }}</p>
                       <p class="text-muted font-size-sm">{{ $student->dob }}</p>
-                      <button style="background-color:blue;"class="btn btn-primary"href="{{route('subjects.index')}}" >Fee Tracker</button>
+                      <button style="background-color:blue;"class="btn btn-primary"href="{{route('students.index',['students' => auth()->user()->id])}}">Fee Tracker</button>
                       
                     </div>
                   </div>
@@ -154,7 +154,7 @@ https://templatemo.com/tm-566-medic-care
                       <h6 class="mb-0">Parent's Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                     hajarharun@gmail.com
+                    {{ auth()->user()->email }}
                     </div>
                   </div>
                   <hr>
@@ -163,7 +163,7 @@ https://templatemo.com/tm-566-medic-care
                       <h6 class="mb-0">Parent's Phone Number</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                     0124435672
+                    {{ auth()->user()->phone_number }}
                     </div>
                   </div>
                   <hr>
@@ -186,16 +186,7 @@ https://templatemo.com/tm-566-medic-care
                     {{ $student->dob }}
                     </div>
                   </div>
-                  <hr>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Home Address</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    12, Jalan Desa, Kampung Baru
-                    </div>
-                  </div>
+                 
                   <hr>
                   <hr>
                   <div class="row">
@@ -212,7 +203,7 @@ https://templatemo.com/tm-566-medic-care
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="updateStudent.html">Update</a>
+                      <a class="btn btn-info " target="__blank" href="{{ route('students.edit',$student->id) }}">Update</a>
                     </div>
                   </div>
                 </div>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use App\User;
-//use App\Guardian;
+use App\Guardian;
 use App\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -105,11 +105,12 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit( $student)
     {
-        $subjects = Subject::pluck('name', 'id');
+        $students = DB::table('students')
+            ->where('id', '=', $student)->get();
 
-        return view('students.edit',compact( 'subjects'));
+        return view('students.edit',compact( 'students'));
 
     }
 

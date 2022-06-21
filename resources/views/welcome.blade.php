@@ -77,19 +77,7 @@ https://templatemo.com/tm-566-medic-care
                                 <a class="nav-link" href="addPatient.html">Group List</a>
                             </li>
 
-                            <li class="nav-item">
-                            <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" class="nav-link">
-              
-              
-                Logout
-              
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-             </form>
-                            </li>
+                            
                         </ul>
                     </div>
 
@@ -224,7 +212,7 @@ https://templatemo.com/tm-566-medic-care
                                 <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
                                     <h3 class=" text-light">Certificates</h3>
 
-                                    <p> Competition Certificiates Certified by Kementerian Pelajaran MAlaysia & ABRSM Certificate</p>
+                                    <p> Competition Certificiates Certified by Kementerian Pelajaran Malaysia & ABRSM Certificate</p>
                                 </div>
 
                                 <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
