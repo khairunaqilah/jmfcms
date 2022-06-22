@@ -20,9 +20,8 @@ class CreateGroupsTable extends Migration
             $table->unsignedInteger('teacher_id')->nullable();
             $table->timestamps();
         });
-
         Schema::table('groups', function (Blueprint $table) {
-            $table->foreign('teacher_id')->references('id')->on('users');
+            
             $table->foreign('subject_id')->references('id')->on('subjects');
             
         });

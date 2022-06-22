@@ -25,7 +25,7 @@ class GroupController extends Controller
         ->where('teacher_id', auth()->user()->id)
         ->get();
   
-        return view('groups.index',compact('group'));
+        return view('groups.index',compact('group','subject'));
     }
 
     /**
