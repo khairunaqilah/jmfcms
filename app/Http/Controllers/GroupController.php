@@ -21,11 +21,12 @@ class GroupController extends Controller
     }
     public function index()
     {
-        $group = Group::with('subjects')
+        /*$group = Group::with('subjects')
         ->where('teacher_id', auth()->user()->id)
-        ->get();
+        ->get();*/
   
-        return view('groups.index',compact('group','subject'));
+        return view('groups.index',compact('group'));
+        /*return view('groups.index',compact('groups'));<--- ini saja yg qila letak dlm create function utk DB*/
     }
 
     /**
@@ -37,6 +38,7 @@ class GroupController extends Controller
     {
         $subjects = Subject::pluck('name', 'id');
         return view('groups.create',compact('subjects'));
+        /* return view('groups.create',compact('subject')); <--- ini saja yg qila letak dlm create function utk DB*/
     }
 
     /**
@@ -52,10 +54,27 @@ class GroupController extends Controller
             'subject_id' => $request->subject_id,
             'teacher_id' => auth()->user()->id,
         ]);
-  
+
+
+
+         /* 
+       cara db
+       $subject = DB::table('subjects')
+        ->select('id')
+        ->where('id','=', $request->subject_id)->first();
+        dd($subject);
+        
+        DB::table('groups')-> insert([
+            
+            'id' =>$request->id,
+            'name' => $request->name,
+            'subject_id' => $subject->id,
+            'teacher_id' => auth()->user()->id,
+        ]);*/ 
+        
         
    
-        return redirect()->route('groups.index')
+        return redirect()->route('groups.create')
                         ->with('success','Group created successfully.');
     }
 
@@ -67,7 +86,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        return view('groups.show',compact('group'));
+        return view('groups.show',compact('subjects'));
     }
 
     /**
@@ -80,7 +99,7 @@ class GroupController extends Controller
     {
         $subjects = Subject::pluck('name', 'id');
 
-        return view('timetables.edit',compact( 'subjects', 'groups'));
+        return view('groups.edit',compact( 'subjects', 'groups'));
     }
 
     /**

@@ -38,9 +38,9 @@
         <div class="col-xs-6 col-sm-6 col-md-6">
             <select class="form-control" name="subject_id">
                 <option value="">-- Choose Subject --</option>
-                @foreach ($subjects as $id => $name)
+                @foreach ($subjects as $id =>$name)
                     <option
-                        value="{{$id}}" {{ (isset($group['subject_id']) && $group['subject_id'] == $id) ? ' selected' : '' }}>{{$name}}</option>
+                    value="{{$id}}" {{ (isset($group['subject_id']) && $group['subject_id'] == $id) ? ' selected' : '' }}>{{$name}}</option>
                 @endforeach
             </select>
         </div>
