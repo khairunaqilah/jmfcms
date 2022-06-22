@@ -30,13 +30,14 @@
         <tr>
             <td>{{ $g->id }}</td>
             <td>{{ $g->name }}</td>
+            <td>{{ $g->subjects->name}}</td>
             <td>{{ auth()->user()->name }}</td>
-            <td>{{ $g->subjects->name }}</td>
+           
             
             <td>
-                <form action="{{ route('timetables.destroy',$g->id) }}" method="POST">
+                <form action="{{ route('groups.destroy',$g->id) }}" method="POST">
    
-                    <!-- <a class="btn btn-info" href="{{ route('groups.show',$g->id) }}">Show</a> -->
+                     <a class="btn btn-info" href="{{ route('groups.show',$g->id) }}">Show</a> 
     
                     <a class="btn btn-primary" href="{{ route('groups.edit',$g->id) }}">Edit</a>
    

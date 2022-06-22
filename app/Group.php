@@ -15,6 +15,10 @@ class Group extends Model
     ];
     public function subjects()
     {
-        return $this->belongsToMany(Subject::class,'id');
-    } //<- utk db saya remove ni
+        return $this->belongsTo(Subject::class,'subject_id');
+    } 
+    public function students()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

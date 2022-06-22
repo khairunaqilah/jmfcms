@@ -21,9 +21,9 @@ class GroupController extends Controller
     }
     public function index()
     {
-        /*$group = Group::with('subjects')
+        $group = Group::all()
         ->where('teacher_id', auth()->user()->id)
-        ->get();*/
+        ;
   
         return view('groups.index',compact('group'));
         /*return view('groups.index',compact('groups'));<--- ini saja yg qila letak dlm create function utk DB*/
@@ -74,7 +74,7 @@ class GroupController extends Controller
         
         
    
-        return redirect()->route('groups.create')
+        return redirect()->route('groups.index')
                         ->with('success','Group created successfully.');
     }
 
@@ -86,7 +86,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        return view('groups.show',compact('subjects'));
+        return view('groups.show',compact('subjects','group'));
     }
 
     /**
@@ -99,7 +99,7 @@ class GroupController extends Controller
     {
         $subjects = Subject::pluck('name', 'id');
 
-        return view('groups.edit',compact( 'subjects', 'groups'));
+        return view('groups.edit',compact( 'subjects', 'group'));
     }
 
     /**
@@ -111,7 +111,7 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
-        // dd($request);
+        
 
         $group->update($request->all());
 
