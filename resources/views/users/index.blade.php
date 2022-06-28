@@ -1,5 +1,3 @@
-
-
 @if(Auth::User()->role=='admin')
 @extends('layouts.template')
 

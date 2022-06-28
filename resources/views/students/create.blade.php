@@ -127,18 +127,7 @@ https://templatemo.com/tm-566-medic-care
                                             
                                         </div>
 
-                                        <div class="col-lg-6 col-12">
-                                        <p>-- Choose Subject --</p>
                                         
-                                       
-                                        @foreach ($subjects as $id => $name)
-                                            <input type="checkbox"  
-                                                value="{{$id}}" {{ (isset($student['subject_id']) == $subjects) ? ' selected' : '' }} > {{$name}} 
-                                                
-                                        @endforeach
-                                   
-                                            
-                                        </div>
                                         
                                         <div class="col-lg-6 col-12">
                                             <p>Gender</p>

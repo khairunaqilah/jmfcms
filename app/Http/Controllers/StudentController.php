@@ -6,6 +6,7 @@ use App\Student;
 use App\User;
 use App\Guardian;
 use App\Subject;
+use App\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -48,9 +49,12 @@ class StudentController extends Controller
        
     
         $subjects = Subject::pluck('name', 'id');
-        
+       // $group = Group::find([4,5]);
+       //$student->groups()->attach($group);
+        $groups = Group::latest()->get();
+        //$student->groups()->attach($group); this is for bridge table for students can join many group
 
-        return view('students.create', compact('subjects' ));
+        return view('students.index', compact('subjects','groups' ));
         
     }
 

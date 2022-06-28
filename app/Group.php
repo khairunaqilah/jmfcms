@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 use App\Subject;
 use App\User;
@@ -19,6 +18,6 @@ class Group extends Model
     } 
     public function students()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Student::class);
     }
 }

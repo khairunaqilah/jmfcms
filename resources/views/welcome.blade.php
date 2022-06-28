@@ -64,7 +64,7 @@ https://templatemo.com/tm-566-medic-care
                                 <a class="nav-link" href="{{ url('subjects') }}">Subjects List</a>
                             </li>
 
-                            <a class="navbar-brand d-none d-lg-block" href="index.html">
+                            <a class="navbar-brand d-none d-lg-block" href="{{ url('/') }}">
                                 JUNIOR MUSIC FESTIVAL
                                 <strong class="d-block">Classes Managment System</strong>
                             </a>
@@ -74,7 +74,7 @@ https://templatemo.com/tm-566-medic-care
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="addPatient.html">Group List</a>
+                                <a class="nav-link" href="{{ url('groups') }}">Group List</a>
                             </li>
 
                             

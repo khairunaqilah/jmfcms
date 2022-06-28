@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Group;
 use App\Subject;
 use App\User;
+use App\Student;
 use Illuminate\Http\Request;
 use DB;
 
@@ -37,8 +38,9 @@ class GroupController extends Controller
     public function create()
     {
         $subjects = Subject::pluck('name', 'id');
+       
         return view('groups.create',compact('subjects'));
-        /* return view('groups.create',compact('subject')); <--- ini saja yg qila letak dlm create function utk DB*/
+        
     }
 
     /**
