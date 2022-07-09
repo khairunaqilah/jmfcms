@@ -52,32 +52,37 @@ https://templatemo.com/tm-566-medic-care
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link" href="{{route('home')}}">Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="login.html">Login</a>
+                                <a class="nav-link" href="{{route('subjects.index')}}">Subjects</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="studentList.html">Students List</a>
+                            <a class="nav-link" href="{{route('students.index',['students' => auth()->user()->id])}}">Students</a>
                             </li>
 
-                            <a class="navbar-brand d-none d-lg-block" href="index.html">
+                            <a class="navbar-brand d-none d-lg-block" href="{{route('home')}}">
                                Junior Music Festival
                                 <strong class="d-block">Classes Management System</strong>
                             </a>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#reviews">Programs</a>
+                                <a class="nav-link" href="{{route('users.show', ['user' => auth()->user()->id])}}">Profile</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="addPatient.html">Registration</a>
+                                <a class="nav-link" href="{{route('fee_trackers.index',['guardian_id' => auth()->user()->id])}}">Fee Tracker</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#contact">Contact</a>
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" class="nav-link">Logout</a>
+                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+             </form>
                             </li>
                         </ul>
                     </div>
@@ -116,14 +121,7 @@ https://templatemo.com/tm-566-medic-care
                                         </div>
                                         
                                         <div class="col-lg-6 col-12">
-                                        <select class="form-control" name="school" >
-                                        <option value="">-- Choose School --</option>
-                                                
-                                                    <option value="skttdijaya">SK TTDI JAYA
-                                                    <option value="skbukitjelutong">SK BUKIT JELUTONG
-                                                    <option value="skputraheights2">SK PUTRA HEIGHTS 2
-                                                    <option value="skpuncakalam">SK PUNCAK ALAM</option>
-                                                </select>
+                                       
                                             
                                         </div>
 

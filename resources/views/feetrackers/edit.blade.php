@@ -40,14 +40,20 @@
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
                 <strong>Receipt:</strong>
-                <input type="file" class="form-control" name="receipt" value="{{$f->receipt}}">
+                <input type="file" class="form-control" name="receipt" value="{{$f->receipt}}" readonly>
             </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
                 <!--buat if authentication utk admin shj boleh edit status payment!-->
                 <strong>Status:</strong>
-                <input type="text" class="form-control" name="payment_status" value="{{$f->payment_status}}">
+                <select class="form-control" name="payment_status" >
+                                        <option value="">Payment Status</option>
+                                                
+                                                    <option value="UNPAID">UNPAID
+                                                    <option value="PAID">PAID
+                                                    
+                                                </select>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -105,7 +111,7 @@
             <div class="form-group">
                 <!--buat if authentication utk admin shj boleh edit status payment!-->
                 <strong>Status:</strong>
-                <input type="text" class="form-control" name="payment_status" value="{{$f->payment_status}}">
+                <input type="text" class="form-control" name="payment_status" value="{{$f->payment_status}}" readonly>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

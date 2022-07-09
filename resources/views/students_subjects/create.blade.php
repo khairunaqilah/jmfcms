@@ -1,10 +1,11 @@
-@if(Auth::User()->role=='teacher')
-@extends('layouts.cikgu')
-@section('content')
+@if(Auth::User()->role=='guardian')
+
+<section class="section-padding" id="booking">
+                <div class="container">
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add New Group</h2>
+            <h2>Register Subjects For Your Child</h2>
         </div>
        
     </div>
@@ -20,16 +21,19 @@
         </ul>
     </div>
 @endif
-   
-<form action="{{ route('groups.store') }}" method="POST">
+<form action="{{ route('students_subjects.store') }}" method="POST">
     @csrf
   
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-12">
-            <div class="form-group">
-                <strong>Group Name:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
-            </div>
+    <div class="col-xs-6 col-sm-6 col-md-6">
+            <select class="form-control" name="student_id">
+                <option value="">-- Choose Student --</option>
+                @foreach ($students as $id =>$name)
+                    <option
+                    value="{{$id}}" {{ (isset($student_subject['student_id']) && $student_subject['student_id'] == $id) ? ' selected' : '' }}>{{$name}}</option>
+                @endforeach
+            </select>
+        </div>
             <br>        
         <br>
         </div>
@@ -40,7 +44,7 @@
                 <option value="">-- Choose Subject --</option>
                 @foreach ($subjects as $id =>$name)
                     <option
-                    value="{{$id}}" {{ (isset($group['subject_id']) && $group['subject_id'] == $id) ? ' selected' : '' }}>{{$name}}</option>
+                    value="{{$id}}" {{ (isset($student_subject['subject_id']) && $student_subject['subject_id'] == $id) ? ' selected' : '' }}>{{$name}}</option>
                 @endforeach
             </select>
         </div>
@@ -55,10 +59,11 @@
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         
-                <a class="btn btn-primary" href="{{ route('groups.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('students.index') }}"> Back</a>
         </div>
     </div>
    
-</form>
-@endsection
+</form> 
+</section>
+        
 @endif

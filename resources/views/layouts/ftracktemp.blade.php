@@ -61,20 +61,20 @@ https://templatemo.com/tm-566-medic-care
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="patientList.html">Subjects List</a>
+                                <a class="nav-link" href="{{ route('subjects.index') }}">Subjects List</a>
                             </li>
 
-                            <a class="navbar-brand d-none d-lg-block" href="index.html">
+                            <a class="navbar-brand d-none d-lg-block" href="{{ url('/home') }}">
                                 JUNIOR MUSIC FESTIVAL
                                 <strong class="d-block">Classes Managment System</strong>
                             </a>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">Register</a>
+                                <a class="nav-link" href="{{ route('students.create') }}">Add Student</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="addPatient.html">Group List</a>
+                                <a class="nav-link" href="{{route('users.show', ['user' => auth()->user()->id])}}">Profile</a>
                             </li>
 
                             <li class="nav-item">

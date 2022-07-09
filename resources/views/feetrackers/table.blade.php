@@ -24,7 +24,7 @@
             <th>Deadline</th>
             <th>Receipt</th>
             <th>Status</th>
-            
+            <th>Guardian's ID</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($feetracker as $f) <!--variable pegang object!-->
@@ -34,10 +34,11 @@
             <td>{{ $f->payment_deadline }}</td>
             <td>{{ $f->receipt }}</td>
             <td>{{ $f->payment_status }}</td>
+            <td>{{ $f->guardian_id }}</td>
             <td>
                 <form action="{{ route('fee_trackers.destroy',$f->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('fee_trackers.show',$f->id) }}">Show</a>
+                    
     
                     <a class="btn btn-primary" href="{{ route('fee_trackers.edit',$f->id) }}">Edit</a>
    
@@ -70,6 +71,7 @@
                                     <th>Deadline</th>
                                     <th>Receipt</th> <!-- not sure what would be suitable-->
                                     <th>Status</th>
+                                    
                                     <th>Action</th>
                             
                                   </tr>
@@ -80,6 +82,7 @@
                                  <td>{{ $f->payment_deadline }}</td>
                                  <td>{{ $f->receipt }}</td>
                                  <td>{{ $f->payment_status }}</td>
+                                 
                                  <td> <form action="{{ route('fee_trackers.destroy',$f->id) }}" method="POST">
    
    <a class="btn btn-info" href="{{ route('fee_trackers.show',$f->id) }}">Show</a>

@@ -54,7 +54,7 @@ class StudentController extends Controller
         $groups = Group::latest()->get();
         //$student->groups()->attach($group); this is for bridge table for students can join many group
 
-        return view('students.index', compact('subjects','groups' ));
+        return view('students.create', compact('subjects','groups' ));
         
     }
 

@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Teacher;
 use App\Guardian;
 use App\User;
-use App\Mail\NewEmail;
-use Mail;
+
 use Illuminate\Http\Request;
 use DB;
 

@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//index
+
 Route::resource('users', 'UserController');
 Route::get('/text','FeeTrackerController@text')->name('text');
 Route::resource('subjects', 'SubjectController');
@@ -31,5 +31,6 @@ Route::resource('guardians', 'GuardianController');
 Route::resource('students', 'StudentController');
 Route::resource('groups', 'GroupController');
 Route::resource('lessonschedules', 'LessonScheduleController');
-use App\Http\Controllers\UserController;
-Route::post('users-send-email',[UserController::class,'sendEmail']) ->name('ajax.send.email');
+Route::resource('students_subjects', 'StudentSubjectController');
+//use App\Http\Controllers\UserController;
+//Route::post('users-send-email',[UserController::class,'sendEmail']) ->name('ajax.send.email');

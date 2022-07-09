@@ -54,6 +54,12 @@ class FeeTrackerController extends Controller
                 'guardian_id'      => $request->userid[$value],
                 'payment_status'   => $request->payment_status,
             ]);
+       /* $user = DB::table('users')
+        ->join('guardians','guardians.user_id', '=', 'users.id')
+        ->select('users.id as user_id','users.name as name','users.email as email', 'users.phone_number as phone_number','guardians.id as id' )
+        ->where('guardians.id',$feetracker->guardian_id)
+        ->first();
+            Mail::to($user->email)->send(new NewMail($feetracker));*/
         }
 
         //FeeTracker::create($request->all());
@@ -95,12 +101,12 @@ class FeeTrackerController extends Controller
      */
     public function update(Request $request, $feetracker)
     {
-        request()->validate([
+        /*request()->validate([
             'fee_month'      => 'nullable',
             'file'           => 'nullable',
             'payment_status' => 'nullable',
 
-        ]);
+        ]);*/
         if ($request->hasFile('receipt')) {
 
             $file            = $request->file('receipt');
@@ -113,10 +119,11 @@ class FeeTrackerController extends Controller
                 'receipt'        => $fileName,
                 'payment_status' => $request->payment_status,
             ]);
+            
 
             // receipt uploaded notification
             $message     = "hi! guardian just uploaded receipt in fee tracker";
-            $phone_no    = "0174690849";
+            $phone_no    = "0193434929";
             $instance_id = '62A220F4E788D';
             $token       = '76bad889dad35fa4fa80acb45f2460a4';
 
@@ -125,14 +132,17 @@ class FeeTrackerController extends Controller
            
 
         }
+        else if($request){
+            DB::table('fee_trackers')->where('id', $feetracker)->update([
 
-        //FeeTracker::create($request->all());
+                'payment_status' => $request->payment_status,
+            ]);
+        }
+
+        
         return back()
-            ->with('success', 'Image Upload Successfully');
-        /* $request->validate([
-    'payment_status'=>'nullable',
-    ]);
-    $feetracker->update($request->all());*/
+            ->with('success', 'Successfully Updated');
+   
 
     }
 

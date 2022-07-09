@@ -91,15 +91,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('lessonschedules.index')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Fee Trackers
+                Lesson Schedules
               </p>
             </a>
           </li>         
           <li class="nav-item">
-            <a href="{{route('fee_trackers.index')}}" class="nav-link">
+            <a href="{{route('lessonschedules.index')}}" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Menus

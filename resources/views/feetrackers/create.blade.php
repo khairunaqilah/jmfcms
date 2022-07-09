@@ -59,7 +59,14 @@
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
                 <strong>Status:</strong>
-                <input type="text" class="form-control" name="payment_status" placeholder="Payment Status">
+                <select class="form-control" name="payment_status" >
+                                        <option value="">Payment Status</option>
+                                                
+                                                    <option value="UNPAID">UNPAID
+                                                    <option value="PAID">PAID
+                                                    
+                                                </select>
+                                            
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
