@@ -6,7 +6,7 @@ use App\StudentSubject;
 use App\Student;
 use App\Subject;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class StudentSubjectController extends Controller
 {
     /**
@@ -14,9 +14,22 @@ class StudentSubjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
+        if(Auth::User()->role =='guardian'){
         $student_subject = StudentSubject::all();
+        //->where('guardian_id')
+
+       
+    }
+        
+        else if(Auth::User()->role =='teacher'){
+            $student_subject = StudentSubject::all();
+        }
         return view('students_subjects.index',compact('student_subject'));
     }
 

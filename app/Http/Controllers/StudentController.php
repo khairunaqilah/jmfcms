@@ -28,9 +28,7 @@ class StudentController extends Controller
         if(Auth::User()->role =='guardian'){
             $student = Student::all()
             ->where('guardian_id', auth()->user()->id);}
-            /*->orderBy('day_id', 'asc')
-            ->orderBy('time_from', 'asc')
-            ->get();*/
+            
             else if(Auth::User()->role =='admin'){
                 $student = Student::all();
             }

@@ -20,4 +20,8 @@ class StudentSubject extends Model
     {
         return $this->belongsTo(Student::class,'student_id');
     }
+    public function groups()
+    {
+        return $this->belongsTo(Student::class,'student_id');
+    }
 }
