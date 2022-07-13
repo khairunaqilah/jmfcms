@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </section>
-            @if(Auth::User()->role=='teacher')
+@elseif(Auth::User()->role=='teacher')
 @extends('layouts.cikgu')
 @section('content')
     <div class="row">

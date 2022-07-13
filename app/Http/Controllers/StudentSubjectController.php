@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\StudentSubject;
 use App\Student;
 use App\Subject;
+use App\Group;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
@@ -84,10 +86,13 @@ class StudentSubjectController extends Controller
      */
     public function edit(StudentSubject $studentSubject)
     {
-        $studentSubject = DB::table('studentSubject')
-            ->where('id', '=', $studentSubject)->get();
+        /*$studentSubject = DB::table('students_subjects')
+            ->where('id', '=', $studentSubject)->get();*/
+            $groups = Group::pluck('name', 'id');
+            $subjects = Subject::pluck('name', 'id');
+            $students = Subject::pluck('name', 'id');
 
-        return view('students_subjects.edit',compact( 'studentSubject'));
+        return view('students_subjects.edit',compact( 'groups','subjects','students','studentSubject'));
     }
 
     /**

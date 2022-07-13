@@ -25,7 +25,7 @@
             </ul>
         </div>
     @endif
-  @foreach($students_subjects as $stusub)
+  @foreach($studentSubject as $stusub)
     <form action="{{ route('students_subjects.update',$stusub->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -76,7 +76,7 @@
             </ul>
         </div>
     @endif
-    @foreach($students_subjects as $stusub)
+    @foreach($student_subject as $stusub)
     <form action="{{ route('students_subjects.update',$stusub->id) }}" method="POST" >
         @csrf
         @method('PUT')
