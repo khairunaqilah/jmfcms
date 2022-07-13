@@ -7,6 +7,7 @@ use App\Student;
 use App\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DB;
 class StudentSubjectController extends Controller
 {
     /**
@@ -22,13 +23,14 @@ class StudentSubjectController extends Controller
     {
         if(Auth::User()->role =='guardian'){
         $student_subject = StudentSubject::all();
-        //->where('guardian_id')
+        
 
        
     }
         
         else if(Auth::User()->role =='teacher'){
-            $student_subject = StudentSubject::all();
+            $student_subject = StudentSubject::all()
+            ->where('group_id','=',null);
         }
         return view('students_subjects.index',compact('student_subject'));
     }
@@ -71,7 +73,7 @@ class StudentSubjectController extends Controller
      */
     public function show(StudentSubject $studentSubject)
     {
-        //
+        return view('students_subjects.show', compact('studentSubject'));
     }
 
     /**
@@ -82,7 +84,10 @@ class StudentSubjectController extends Controller
      */
     public function edit(StudentSubject $studentSubject)
     {
-        //
+        $studentSubject = DB::table('studentSubject')
+            ->where('id', '=', $studentSubject)->get();
+
+        return view('students_subjects.edit',compact( 'studentSubject'));
     }
 
     /**
@@ -94,7 +99,22 @@ class StudentSubjectController extends Controller
      */
     public function update(Request $request, StudentSubject $studentSubject)
     {
-        //
+        if(Auth::User()->role =='teacher'){
+           $studentSubject=StudentSubject::all()->where('id', $studentSubject)->update([
+
+                'group_id' => $request->group_id,
+            ]);
+        }
+        else if(Auth::User()->role =='guardian'){
+            $studentSubject=StudentSubject::all()->where('id',  $studentSubject)->update([
+
+                'subject_id' => $request->subject_id,
+            ]);
+        }
+
+        
+        return back()
+            ->with('success', 'Successfully Updated');
     }
 
     /**

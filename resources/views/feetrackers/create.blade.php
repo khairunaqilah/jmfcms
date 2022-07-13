@@ -25,15 +25,30 @@
   
      <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-12">
-            <div class="form-group">
-                <strong>Fee Month:</strong>
-                <input type="text" name="fee_month" class="form-control" placeholder="Fee Month">
-            </div>
+        <select class="form-control" name="fee_month" >
+                                        <option value="">-- Fee Month --</option>
+                                                
+                                                    <option value="january">JANUARY
+                                                    <option value="february">FEBRUARY
+                                                    <option value="march">MARCH
+                                                    <option value="april">APRIL
+                                                    <option value="may">MAY
+                                                    <option value="june">JUNE
+                                                    <option value="july">JULY
+                                                    <option value="august">AUGUST
+                                                    <option value="september">SEPTEMBER
+                                                    <option value="october">OCTOBER
+                                                    <option value="november">NOVEMBER
+                                                    <option value="december">DECEMBER
+
+                                                    </option>
+                                                </select>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
                 <strong>Deadline:</strong>
-                <input type="text" class="form-control" name="payment_deadline" placeholder="Payment Deadline">
+                <input type="date" name="payment_deadline"  class="form-control"   placeholder="yyyy-mm-dd"  required>
+                                            <script>document.getElementById("date").value</script>
             </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-12">

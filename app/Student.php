@@ -20,4 +20,7 @@ class Student extends Model
     {
         return $this->belongsToMany(Group::class);
     }
+    public function guardians(){
+        return $this->belongsTo(Guardian::class, 'user_id');
+    }
 }

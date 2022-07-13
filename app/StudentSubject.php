@@ -9,7 +9,7 @@ class StudentSubject extends Model
 {
     public $table ="students_subjects";
 
-    protected $fillable =[ 'student_id','subject_id'
+    protected $fillable =[ 'student_id','subject_id','group_id'
 
     ];
 
@@ -22,6 +22,6 @@ class StudentSubject extends Model
     }
     public function groups()
     {
-        return $this->belongsTo(Student::class,'student_id');
+        return $this->belongsTo(Group::class,'group_id');
     }
 }

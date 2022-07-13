@@ -121,7 +121,14 @@ https://templatemo.com/tm-566-medic-care
                                         </div>
                                         
                                         <div class="col-lg-6 col-12">
-                                       
+                                        <select class="form-control" name="school" >
+                                        <option value="">-- Choose School --</option>
+                                                
+                                                    <option value="skttdijaya">SK TTDI JAYA
+                                                    <option value="skbukitjelutong">SK BUKIT JELUTONG
+                                                    <option value="skputraheights2">SK PUTRA HEIGHTS 2
+                                                    <option value="skpuncakalam">SK PUNCAK ALAM</option>
+                                                </select>
                                             
                                         </div>
 
