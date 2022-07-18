@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\FeeTracker;
 use App\User;
+use App\Mail\NewMail;
 use Auth;
 use DB;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Redirect;
 use Response;
 
@@ -54,12 +56,12 @@ class FeeTrackerController extends Controller
                 'guardian_id'      => $request->userid[$value],
                 'payment_status'   => $request->payment_status,
             ]);
-        /*$user = DB::table('users')
+        $user = DB::table('users')
         ->join('guardians','guardians.user_id', '=', 'users.id')
         ->select('users.id as user_id','users.name as name','users.email as email', 'users.phone_number as phone_number','guardians.id as id' )
         ->where('guardians.id',$value->guardian_id)
         ->first();
-            Mail::to($user->email)->send(new NewMail($feetracker));*/
+            Mail::to($user->email)->send(new NewMail($feetracker));
         }
 
         
@@ -67,6 +69,8 @@ class FeeTrackerController extends Controller
             ->with('success', 'Added Successfully');
 
     }
+   
+
     /**
      * Display the specified resource.
      *

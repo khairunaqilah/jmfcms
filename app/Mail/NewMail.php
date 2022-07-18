@@ -28,7 +28,7 @@ class NewMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('This is Testing Mail')
+        return $this->subject('Monthly Payment is Due Mail')
         ->view('emails.newEmail');
     }
 }

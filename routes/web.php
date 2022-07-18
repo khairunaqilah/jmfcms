@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UserController');
 Route::get('/text','FeeTrackerController@text')->name('text');
+Route::get('/send','FeeTrackerController@send')->name('fee_trackers.send');
 Route::resource('subjects', 'SubjectController');
 Route::resource('teachers', 'TeacherController');
 Route::resource('fee_trackers', 'FeeTrackerController');
@@ -32,5 +33,4 @@ Route::resource('students', 'StudentController');
 Route::resource('groups', 'GroupController');
 Route::resource('lessonschedules', 'LessonScheduleController');
 Route::resource('students_subjects', 'StudentSubjectController');
-//use App\Http\Controllers\UserController;
-//Route::post('users-send-email',[UserController::class,'sendEmail']) ->name('ajax.send.email');
+
