@@ -56,12 +56,15 @@ class FeeTrackerController extends Controller
                 'guardian_id'      => $request->userid[$value],
                 'payment_status'   => $request->payment_status,
             ]);
-        $user = DB::table('users')
-        ->join('guardians','guardians.user_id', '=', 'users.id')
-        ->select('users.id as user_id','users.name as name','users.email as email', 'users.phone_number as phone_number','guardians.id as id' )
-        ->where('guardians.id',$value->guardian_id)
-        ->first();
-            Mail::to($user->email)->send(new NewMail($feetracker));
+            $user = DB::table('users')
+            ->join('guardians','guardians.user_id', '=', 'users.id')
+            ->select('users.id as user_id','users.name as name','users.email as email', 'users.phone_number as phone_number','guardians.id as id' )
+            ->where('guardians.user_id', $task)
+            ->first();
+    
+      
+    
+                Mail::to($user->email)->send(new NewMail($user));
         }
 
         
