@@ -57,7 +57,7 @@ https://templatemo.com/tm-566-medic-care
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                <a class="nav-link" href="{{ route('groups.index') }}">Group List</a>
                             </li>
 
                             <li class="nav-item">

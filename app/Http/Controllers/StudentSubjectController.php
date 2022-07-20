@@ -84,12 +84,11 @@ class StudentSubjectController extends Controller
      * @param  \App\StudentSubject  $studentSubject
      * @return \Illuminate\Http\Response
      */
-    public function edit(StudentSubject $studentSubject)
+    public function edit($id)
     {
-       
-       //dd($studentSubject); 
        $studentSubject = DB::table('students_subjects')
-            ->where('id', '=', $studentSubject)->get();
+            ->where('id', '=', $id)->get();
+            
             $groups = Group::pluck('name', 'id');
             $subjects = Subject::pluck('name', 'id');
             $students = Subject::pluck('name', 'id');
@@ -104,18 +103,18 @@ class StudentSubjectController extends Controller
      * @param  \App\StudentSubject  $studentSubject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StudentSubject $studentSubject)
+    public function update(Request $req, $id)
     {
         if(Auth::User()->role =='teacher'){
-           $studentSubject=StudentSubject::all()->where('id', $studentSubject)->update([
 
-                'group_id' => $request->group_id,
+            DB::table('students_subjects')->where('id', $id)->update([
+                'group_id' => $req->group_id,
             ]);
         }
         else if(Auth::User()->role =='guardian'){
-            $studentSubject=StudentSubject::all()->where('id',  $studentSubject)->update([
+            $studentSubject=StudentSubject::all()->where('id',  $id)->update([
 
-                'subject_id' => $request->subject_id,
+                'subject_id' => $req->subject_id,
             ]);
         }
 

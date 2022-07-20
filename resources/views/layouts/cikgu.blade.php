@@ -120,15 +120,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('groups.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Of Students</p>
+                  <p>List Of Groups</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('students_subjects.index')}}"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Of Admins</p>
+                  <p>List Of Students</p>
                 </a>
               </li>
             </ul>
