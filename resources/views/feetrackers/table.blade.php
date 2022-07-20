@@ -85,7 +85,7 @@
                                  
                                  <td> <form action="{{ route('fee_trackers.destroy',$f->id) }}" method="POST">
    
-   <a class="btn btn-info" href="{{ route('fee_trackers.show',$f->id) }}">Show</a>
+   
 
    <a class="btn btn-primary" href="{{ route('fee_trackers.edit',$f->id) }}">Edit</a>
 

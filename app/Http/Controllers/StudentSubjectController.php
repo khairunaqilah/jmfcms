@@ -86,8 +86,10 @@ class StudentSubjectController extends Controller
      */
     public function edit(StudentSubject $studentSubject)
     {
-        /*$studentSubject = DB::table('students_subjects')
-            ->where('id', '=', $studentSubject)->get();*/
+       
+       //dd($studentSubject); 
+       $studentSubject = DB::table('students_subjects')
+            ->where('id', '=', $studentSubject)->get();
             $groups = Group::pluck('name', 'id');
             $subjects = Subject::pluck('name', 'id');
             $students = Subject::pluck('name', 'id');

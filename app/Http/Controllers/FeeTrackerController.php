@@ -55,6 +55,7 @@ class FeeTrackerController extends Controller
                 'payment_deadline' => $request->payment_deadline,
                 'guardian_id'      => $request->userid[$value],
                 'payment_status'   => $request->payment_status,
+                'admin_id' => auth()->user()->id,
             ]);
             $user = DB::table('users')
             ->join('guardians','guardians.user_id', '=', 'users.id')

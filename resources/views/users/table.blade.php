@@ -23,6 +23,7 @@
             <th>Created At</th>
             <th width="280px">Action</th>
         </tr>
+        @if(!empty($user) && $user->count())
         @foreach ($user as $u)
         <tr>
             <td>{{ $u->id }}</td>
@@ -45,6 +46,11 @@
            
         </tr>
         @endforeach
+        @else
+            <tr>
+                <td colspan="10">There are no data.</td>
+            </tr>
+        @endif
     </table>
-    
+    {!! $user->appends(Request::all())->links() !!}
 @endsection

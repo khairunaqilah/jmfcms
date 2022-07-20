@@ -1,5 +1,5 @@
-@extends('layouts.template')
-@section('content')
+@if(Auth::User()->role=='guardian')
+@extends('layouts.ftracktemp')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -38,4 +38,5 @@
                 <a class="btn btn-primary" href="{{ route('fee_trackers.index') }}"> Back</a>
         </div>
     </div>
-@endsection
+
+@endif
