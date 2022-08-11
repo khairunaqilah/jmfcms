@@ -92,8 +92,8 @@ https://templatemo.com/tm-566-medic-care
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="patientList.html">Students</a></li>
+              <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('students.index',['students' => auth()->user()->id])}}">Students</a></li>
               <li class="breadcrumb-item active" aria-current="page">Student Profile</li>
             </ol>
           </nav>
@@ -104,12 +104,12 @@ https://templatemo.com/tm-566-medic-care
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://www.kindpng.com/imgv/ihoJmmR_college-student-icon-hd-png-download/" alt="Profile Pic" class="rounded-circle" width="150">
+                    <img src="https://www.flaticon.com/free-icon/profile_1250296" alt="Profile Pic" class="rounded-circle" width="150">
                     <div class="mt-3">
                       <h4>{{ $student->name }}</h4>
                       <p class="text-secondary mb-1">{{ $student->id }}</p>
                       <p class="text-muted font-size-sm">{{ $student->dob }}</p>
-                      <button style="background-color:blue;"class="btn btn-primary"href="{{route('students.index',['students' => auth()->user()->id])}}">Fee Tracker</button>
+                     
                       
                     </div>
                   </div>
@@ -213,14 +213,9 @@ https://templatemo.com/tm-566-medic-care
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Program</i>&nbsp; Teachers</h6>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Registered</i>&nbsp; Subjects</h6>
+                      <a class="btn btn-info "href="{{route('students_subjects.index',$student->id)}}">List</a>
                      
-                      <small>Keyboard</small>
-                       
-                        <p class="text-muted font-size-sm">Teacher Nadine</p>
-                        <small>Music Theory </small>
-                       
-                         <p class="text-muted font-size-sm">Teacher Nadine</p>
                       </div>
                       
                     </div>

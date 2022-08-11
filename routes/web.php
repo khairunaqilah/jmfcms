@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UserController');
+Route::get('/list', 'StudentSubjectController@list')->name('students_subjects.list');
 Route::get('/text','FeeTrackerController@text')->name('text');
 Route::get('/send','FeeTrackerController@send')->name('fee_trackers.send');
 Route::resource('subjects', 'SubjectController');

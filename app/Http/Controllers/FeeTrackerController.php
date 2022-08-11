@@ -126,7 +126,7 @@ class FeeTrackerController extends Controller
 
             // receipt uploaded notification
             $message     = "hi! guardian just uploaded receipt in fee tracker";
-            $phone_no    = "0192612264";
+            $phone_no    = "0197270017";
             $instance_id = '62A220F4E788D';
             $token       = '76bad889dad35fa4fa80acb45f2460a4';
 

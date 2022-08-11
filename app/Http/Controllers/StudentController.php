@@ -47,10 +47,9 @@ class StudentController extends Controller
        
     
         $subjects = Subject::pluck('name', 'id');
-       // $group = Group::find([4,5]);
-       //$student->groups()->attach($group);
+       
         $groups = Group::latest()->get();
-        //$student->groups()->attach($group); this is for bridge table for students can join many group
+        
 
         return view('students.create', compact('subjects','groups' ));
         

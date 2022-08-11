@@ -29,6 +29,12 @@ class StudentSubjectController extends Controller
 
        
     }
+        elseif(Auth::User()->role =='admin'){
+            $student_subject = StudentSubject::all();
+            
+
+        
+        }
         
         else if(Auth::User()->role =='teacher'){
             $student_subject = StudentSubject::all()
@@ -132,5 +138,27 @@ class StudentSubjectController extends Controller
     public function destroy(StudentSubject $studentSubject)
     {
         //
+    }
+
+    public function list(StudentSubject $studentSubject)
+    {
+        if(Auth::User()->role =='guardian'){
+            $student_subject = StudentSubject::all();
+            
+    
+           
+        }
+            elseif(Auth::User()->role =='admin'){
+                $student_subject = StudentSubject::all();
+                
+    
+            
+            }
+            
+            else if(Auth::User()->role =='teacher'){
+                $student_subject = StudentSubject::all();
+                
+            }
+            return view('students_subjects.list',compact('student_subject'));
     }
 }

@@ -4,6 +4,7 @@ use App\LessonSchedule;
 use App\Group;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class LessonScheduleController extends Controller
@@ -19,9 +20,14 @@ class LessonScheduleController extends Controller
     }
     public function index()
     {
+        if(Auth::User()->role =='teacher'){
         $lessonschedule = LessonSchedule::all()
         ->where('teacher_id', auth()->user()->id)
         ;
+    }
+        elseif(Auth::User()->role =='guardian'){
+            $lessonschedule = LessonSchedule::all();
+        }
   
         return view('lessonschedules.index',compact('lessonschedule'));
     }

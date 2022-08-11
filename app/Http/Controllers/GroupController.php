@@ -58,24 +58,6 @@ class GroupController extends Controller
         ]);
 
 
-
-         /* 
-       cara db
-       $subject = DB::table('subjects')
-        ->select('id')
-        ->where('id','=', $request->subject_id)->first();
-        dd($subject);
-        
-        DB::table('groups')-> insert([
-            
-            'id' =>$request->id,
-            'name' => $request->name,
-            'subject_id' => $subject->id,
-            'teacher_id' => auth()->user()->id,
-        ]);*/ 
-        
-        
-   
         return redirect()->route('groups.index')
                         ->with('success','Group created successfully.');
     }

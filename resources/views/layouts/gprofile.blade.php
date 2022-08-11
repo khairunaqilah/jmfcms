@@ -41,7 +41,7 @@ https://templatemo.com/tm-566-medic-care
 
             <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
                 <div class="container">
-                    <a class="navbar-brand mx-auto d-lg-none" href="index.html">
+                    <a class="navbar-brand mx-auto d-lg-none" href="{{route('home')}}">
                         Junior Music Festival
                         <strong class="d-block">Classes Management System</strong>
                     </a>

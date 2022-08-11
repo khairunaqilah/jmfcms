@@ -25,7 +25,7 @@
         
         
         <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('students.index') }}"> Student List</a>
+                <a class="btn btn-primary" href="{{ route('students_subjects.index') }}"> Student List</a>
                 <a class="btn btn-primary" href="{{ route('groups.index') }}"> Back</a>
         </div>
     </div>
