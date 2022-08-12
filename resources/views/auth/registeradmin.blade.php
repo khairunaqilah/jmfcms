@@ -1,3 +1,4 @@
+@if(Auth::User()->role=='admin')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,12 +78,18 @@
                                 <div class="input-group">
                                     <label class="label">Role</label>
                                     <div class="p-t-10">
-                                        
+                                        <label class="radio-container m-r-45">Teacher
+                                            <input id="teacher" type="radio" class="form-control @error('role') is-invalid @enderror" name="role" value="teacher">
+                                            <span class="checkmark"></span>
+                                        </label>
                                         <label class="radio-container">Guardian
                                             <input id="guardian" type="radio" class="form-control @error('role') is-invalid @enderror" name="role" value="guardian" >
                                             <span class="checkmark"></span>
                                         </label>
-                                       
+                                        <label class="radio-container">Admin
+                                            <input id="admin" type="radio" class="form-control @error('role') is-invalid @enderror" name="role" value="admin" >
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
                                 </div>
                                 @error('role')
@@ -142,4 +149,4 @@
 
 </html>
 <!-- end document-->
-
+@endif

@@ -16,7 +16,28 @@ class UserController extends Controller
        $user = User::paginate(10);
         return view('users.index',compact('user'));
     }
+    public function create()
+    {
+        return view('users.create');
+    }
+    public function store(Request $request)
+    {        
+        $request->validate([
+            'role' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone_number' => ['required', 'string', 'max:255'],
+        ]);
+  
+        User::create($request->all());
    
+        return redirect()->route('users.index')
+                        ->with('success','User created successfully.');
+    }
+
+    
+    
     /**
      * Display the specified resource.
      *

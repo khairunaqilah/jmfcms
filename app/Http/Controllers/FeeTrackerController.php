@@ -27,7 +27,7 @@ class FeeTrackerController extends Controller
                 ->where('guardian_id', auth()->user()->id);}
         
         else if (Auth::User()->role == 'admin') {
-            $feetracker = FeeTracker::all();}
+            $feetracker = FeeTracker::paginate(10);}
 
         return view('feetrackers.index', compact('feetracker'));
     }
