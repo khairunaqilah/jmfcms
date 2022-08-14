@@ -1,3 +1,4 @@
+@if(Auth::User()->role=='admin')
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -5,7 +6,9 @@
                 <h2>List of Users</h2>
                
             </div>
-            
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('users.create') }}"> Add New Staff</a>
+            </div>
         </div>
     </div>
    
@@ -54,3 +57,38 @@
     </table>
     {!! $user->appends(Request::all())->links() !!}
 @endsection
+@elseif(Auth::User()->role=='guardian')
+<section class="section-padding" id="booking">
+                <div class="container">
+                    <div class="row">
+                    
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="booking-form">
+                                
+                                <h2>List of Teachers</h2>
+                                <a class="btn btn-success" href="{{route('lessonschedules.index')}}"> Lesson Schedules</a>
+
+                                <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Created At</th>
+           
+            
+        </tr>
+        
+        @foreach ($user as $u)
+        <tr>
+            <td>{{ $u->id }}</td>
+            <td>{{ $u->name}}</td>
+            <td>{{ $u->role }}</td>
+            <td>{{ $u->created_at }}</td>
+            
+           
+        </tr>
+        @endforeach
+       
+    </table>
+   
+@endif

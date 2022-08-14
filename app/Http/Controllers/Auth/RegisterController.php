@@ -118,7 +118,13 @@ public function update(Request $request)
 
 }
 else{
-    $data->update($request->all());
+    $data = DB::table('users')->where('id', $request->id)->update([
+        'role'=> $request->role,
+        'name'=> $request->name,
+        'email'=> $request->email, 
+        'password'=> $request->password,
+        'phone_number' => $request->phone_number,
+    ]);
 }
 
 }

@@ -7,8 +7,10 @@
                         <div class="col-lg-8 col-12 mx-auto">
                             <div class="booking-form">
                                 
-                                <h2>Students</h2>
-
+                                <h2>Registered Subject</h2>
+                                
+                                    <a class="btn btn-success" href="{{ route('students_subjects.create') }}"> Register Subject</a>
+                               
                                 <table>
                                   <tr>
                                     <th>Student </th>
@@ -35,8 +37,10 @@
    
 
    
-
-   
+    @csrf
+    @method('DELETE')
+      
+     <button type="submit" class="btn btn-danger">Drop Subject</button>
 </form>
 </td>
                                   </tr>
@@ -89,7 +93,6 @@
                                  <td>{{ $stusub->subjects->name}}</td>
                                  <td>{{ $stusub->group_id }}</td>
                                  
-                                 
                                  <td> <form action="{{ route('students_subjects.destroy',$stusub->id) }}" method="POST">
    
    
@@ -99,6 +102,9 @@
     @method('DELETE')
       
      <button type="submit" class="btn btn-danger">Delete</button>
+
+                                 
+                                 
 
    
 </form>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use App\User;
+use DB;
 
 use Illuminate\Http\Request;
 
@@ -16,11 +17,10 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
+       
         $users = DB::table('users')
-            ->join('teachers','teachers.user_id','=','users.id')
-            ->select('users.id as id','users.name as name')->get();
-
+            ->where('role','=','teacher');
+            
         
         return view('teachers.index', compact('teachers','users'));
     }

@@ -82,10 +82,7 @@
                                             <input id="teacher" type="radio" class="form-control @error('role') is-invalid @enderror" name="role" value="teacher">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <label class="radio-container">Guardian
-                                            <input id="guardian" type="radio" class="form-control @error('role') is-invalid @enderror" name="role" value="guardian" >
-                                            <span class="checkmark"></span>
-                                        </label>
+                                       
                                         <label class="radio-container">Admin
                                             <input id="admin" type="radio" class="form-control @error('role') is-invalid @enderror" name="role" value="admin" >
                                             <span class="checkmark"></span>
@@ -128,13 +125,20 @@
                         
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit">Register</button>
+                            
                         </div>
                     </form>
+                    <div class="p-t-15">
+                            
+                            <button class="btn btn--radius-2 btn--blue" href="{{ route('users.index') }}"> Back</button>
+                        </div>
+                    
                 </div>
             </div>
         </div>
+        
     </div>
-
+    
     <!-- Jquery JS-->
     <script src="{{ asset('registration/vendor/jquery/jquery.min.js')}}"></script>
     <!-- Vendor JS-->

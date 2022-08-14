@@ -7,6 +7,7 @@ use App\Subject;
 use App\User;
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class GroupController extends Controller
@@ -22,9 +23,14 @@ class GroupController extends Controller
     }
     public function index()
     {
+        if(Auth::User()->role =='teacher'){
         $group = Group::all()
         ->where('teacher_id', auth()->user()->id)
-        ;
+        ;}
+        else if(Auth::User()->role =='guardian'){
+            $group = Group::all();
+        
+        }
   
         return view('groups.index',compact('group'));
         /*return view('groups.index',compact('groups'));<--- ini saja yg qila letak dlm create function utk DB*/

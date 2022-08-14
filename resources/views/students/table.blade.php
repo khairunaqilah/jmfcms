@@ -8,6 +8,7 @@
                             <div class="booking-form">
                                 
                                 <h2>Students</h2>
+                                <a class="btn btn-success" href="{{ route('students_subjects.create') }}"> Register Subject</a>
 
                                 <table>
                                   <tr>
@@ -34,7 +35,7 @@
    @csrf
                     @method('DELETE')
       
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    
 
    
 </form>

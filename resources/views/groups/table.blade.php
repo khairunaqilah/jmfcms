@@ -52,4 +52,35 @@
     </table>
         
 @endsection
+@elseif(Auth::User()->role=='guardian')
+<section class="section-padding" id="booking">
+                <div class="container">
+                    <div class="row">
+                    
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="booking-form">
+                                
+                                <h2>Groups Available</h2>
+                                <a class="btn btn-success" href="{{route('users.index')}}"> Teachers</a>
+
+                                <table>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Teacher's ID</th>
+            
+        </tr>
+        @foreach ($group as $g)
+        <tr>
+            <td>{{ $g->id }}</td>
+            <td>{{ $g->name }}</td>
+            <td>{{ $g->subjects->name}}</td>
+            <td>{{ $g->teacher_id }}</td>
+           
+            
+            
+        </tr>
+        @endforeach
+    </table>
 @endif

@@ -7,13 +7,19 @@ use App\Guardian;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class UserController extends Controller
 {
     public function index()
     {
-       $user = User::paginate(10);
+        if(Auth::User()->role =='admin'){
+        $user = User::paginate(10);
+        }
+        elseif(Auth::User()->role =='guardian'){
+            $user = User::all()->where('role','=','teacher');
+            }
         return view('users.index',compact('user'));
     }
     public function create()
@@ -148,6 +154,16 @@ class UserController extends Controller
             $guardian->address= $request->address;
             $guardian->user_id= $user->id; //panggil id user
             $guardian->save();
+        }
+        else if ($user->role=='admin'){
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = $request->password;
+            $user->phone_number = $request->phone_number;
+            $user->save();
+
+            
+          
         }
         return redirect('users/'.$user->id.'');
                         

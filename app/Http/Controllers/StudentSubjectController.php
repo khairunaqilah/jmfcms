@@ -141,9 +141,13 @@ class StudentSubjectController extends Controller
      * @param  \App\StudentSubject  $studentSubject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StudentSubject $studentSubject)
+    public function destroy( $studentSubject)
     {
-        //
+        $stu_sub = StudentSubject::find($studentSubject);
+ 
+        $stu_sub->delete();
+        return back()
+            ->with('success', 'Successfully drop subject');
     }
 
     public function list(StudentSubject $studentSubject)

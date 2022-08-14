@@ -72,6 +72,7 @@
                             <div class="booking-form">
                                 
                                 <h2>Lesson Schedules</h2>
+                                <a class="btn btn-success" href="{{route('users.index')}}"> Teachers</a>
 
                                 <table>
                                   <tr>

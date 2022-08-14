@@ -71,7 +71,7 @@
                       <h4>{{ $user->name }}</h4>
                       <p class="text-secondary mb-1"> {{ $user->email }}</p>
                       <p class="text-muted font-size-sm">{{ $user->phone_number }}</p>
-                      <button style="background-color:blue;"class="btn btn-primary"href='patientList.html'; >Fee Tracker</button>
+                      
                       
                     </div>
                   </div>

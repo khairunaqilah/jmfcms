@@ -3,5 +3,12 @@
 
 @section('content')
 @include('users.table')
-@endif
 @endsection
+
+@elseif(Auth::User()->role=='guardian')
+@extends('layouts.ftracktemp')
+
+
+@include('users.table')
+@endif
+

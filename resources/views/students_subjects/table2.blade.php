@@ -67,7 +67,7 @@
                 <h2>Students Registered</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('students_subjects.create') }}"> Add New Group</a>
+                <a class="btn btn-success" href="{{ route('students_subjects.create') }}"> Register Subject</a>
             </div>
         </div>
     </div>

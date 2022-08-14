@@ -121,7 +121,7 @@ https://templatemo.com/tm-566-medic-care
                                         </div>
                                         
                                         <div class="col-lg-6 col-12">
-                                        <select class="form-control" name="school" >
+                                        <select class="form-control" name="school"  required>
                                         <option value="">-- Choose School --</option>
                                                 
                                                     <option value="skttdijaya">SK TTDI JAYA
@@ -136,14 +136,14 @@ https://templatemo.com/tm-566-medic-care
                                         
                                         <div class="col-lg-6 col-12">
                                             <p>Gender</p>
-                                            <input  type="radio"  name="gender" value="male">
+                                            <input  type="radio"  name="gender" value="male" checked="checked">
                                             <label for="male">Male</label><br>
                                             <input type="radio"  name="gender" value="female">
                                             <label for="female">Female</label><br>
                                         </div>
                                         <div class="col-lg-6 col-12">
                                             <p>Race</p>
-                                            <input  type="radio"  name="race" value="malay">
+                                            <input  type="radio"  name="race" value="malay"checked="checked" >
                                             <label for="malay">Malay</label><br>
                                             <input   type="radio"  name="race" value="chinese">
                                             <label for="chinese">Chinese</label><br>
