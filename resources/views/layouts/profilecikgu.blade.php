@@ -1,9 +1,10 @@
-@if(Auth::User()-> role=='teacher')
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>JMFCMS | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -68,7 +69,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('admin/dist/img/user3-128x128.jpg')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('admin/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{Auth::user()->name}}<br>
@@ -91,23 +92,28 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('lessonschedules.index')}}" class="nav-link">
+            <a href="{{route('fee_trackers.index')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Lesson Schedules
+                Fee Trackers
               </p>
             </a>
           </li>         
           <li class="nav-item">
-            <a href=# class="nav-link">
+            <a href="{{route('fee_trackers.index')}}" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Menus
                 <i class="fas fa-angle-left right"></i>
               </p>
-              </a>
+            </a>
             <ul class="nav nav-treeview">
-              
+              <li class="nav-item">
+                <a href="{{route('users.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of Users</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="{{route('subjects.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -115,15 +121,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('groups.index')}}" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Of Groups</p>
+                  <p>List Of Students</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('students_subjects.index')}}"  class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Of Students</p>
+                  <p>List Of Admins</p>
                 </a>
               </li>
             </ul>
@@ -229,4 +235,3 @@
 <script src="{{ asset('admin/dist/js/pages/dashboard.js')}}"></script>
 </body>
 </html>
-@endif
