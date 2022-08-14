@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Teacher;
 use App\Guardian;
 use App\User;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use DB;
 
@@ -20,6 +20,7 @@ class UserController extends Controller
     {
         return view('users.create');
     }
+
     public function store(Request $request)
     {        
         $request->validate([
@@ -30,7 +31,24 @@ class UserController extends Controller
             'phone_number' => ['required', 'string', 'max:255'],
         ]);
   
-        User::create($request->all());
+        // $request->password = md5($request->password);
+        // dd($request->name);
+        // User::create($request->all());
+        
+        User::create([
+            'role' => $request->role,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'phone_number' => $request->phone_number
+        ]);
+        // DB::table('users')->where('id', $request->id)->update([
+        //     'role'=> $request->role,
+        //     'name'=> $request->name,
+        //     'email'=> $request->email, 
+        //     'password'=> $request->password,
+        //     'phone_number' => $request->phone_number,
+        // ]);
    
         return redirect()->route('users.index')
                         ->with('success','User created successfully.');

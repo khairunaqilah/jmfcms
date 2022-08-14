@@ -33,7 +33,7 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Registration Form</h2>
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('users.store') }}">
                         @csrf
                         <div class="row row-space">
                             <div class="col-2">

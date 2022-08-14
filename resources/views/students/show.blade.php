@@ -214,7 +214,7 @@ https://templatemo.com/tm-566-medic-care
                   <div class="card h-100">
                     <div class="card-body">
                       <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Registered</i>&nbsp; Subjects</h6>
-                      <a class="btn btn-info "href="{{route('students_subjects.index',$student->id)}}">List</a>
+                      <a class="btn btn-info "href="{{route('students_subjects.listSubject',$student->id)}}">List</a>
                      
                       </div>
                       

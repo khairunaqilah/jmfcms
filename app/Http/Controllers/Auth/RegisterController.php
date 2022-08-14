@@ -117,6 +117,9 @@ public function update(Request $request)
 ]);
 
 }
+else{
+    $data->update($request->all());
+}
 
 }
 }

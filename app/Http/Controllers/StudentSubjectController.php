@@ -26,8 +26,6 @@ class StudentSubjectController extends Controller
         if(Auth::User()->role =='guardian'){
         $student_subject = StudentSubject::all();
         
-
-       
     }
         elseif(Auth::User()->role =='admin'){
             $student_subject = StudentSubject::all();
@@ -43,6 +41,11 @@ class StudentSubjectController extends Controller
         return view('students_subjects.index',compact('student_subject'));
     }
 
+    public function listSubject($id){
+        $student_subject = StudentSubject::where('student_id',$id)->get();
+        return view('students_subjects.index',compact('student_subject'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +54,7 @@ class StudentSubjectController extends Controller
     public function create()
     {
         $subjects = Subject::pluck('name', 'id');
-        $students = Student::pluck('name', 'id');
+        $students = Student::where('guardian_id',Auth::User()->id)->pluck('name', 'id');
        
         return view('students_subjects.create',compact('subjects','students'));
     }
@@ -64,12 +67,15 @@ class StudentSubjectController extends Controller
      */
     public function store(Request $request)
     {
+    
         StudentSubject::create([
            
             'student_id' => $request->student_id,
             'subject_id' => $request->subject_id,
             
         ]);
+
+        return redirect()->route('students_subjects.listSubject',$request->student_id);
         
     }
 
@@ -95,7 +101,7 @@ class StudentSubjectController extends Controller
        $studentSubject = DB::table('students_subjects')
             ->where('id', '=', $id)->get();
             
-            $groups = Group::pluck('name', 'id');
+            $groups = Group::where("teacher_id",Auth::User()->id)->pluck('name', 'id');
             $subjects = Subject::pluck('name', 'id');
             $students = Subject::pluck('name', 'id');
 
